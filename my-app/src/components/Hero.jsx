@@ -28,7 +28,7 @@ return<div className="front-page" id="home">
 </div>
 <div className="contactme">
  <a href="#contact"><button type="button"><h2>Contact</h2> </button></a>
- <a href="#"><button type="button" id="cv"><h2>Download CV</h2>  </button></a>
+ <a href="https://flowcv.com/resume/isuhsdbt7hcm"><button type="button" id="cv"><h2>Download CV</h2>  </button></a>
 
 </div>   
 </div>
