@@ -31,7 +31,7 @@ export default function About() {
 </div>
 
 <div className="speech">
-    <p>Hi, I'm Sarthak Dudhe, a Computer Engineering student at Datta Meghe College of Engineering. Throughout my academic journey, I've developed a solid understanding of computer science fundamentals, including programming languages, data structures, and algorithms. I'm particularly passionate about MERN stack development, with a focus on building scalable and efficient web applications. Additionally, I'm interested in Java development.Take a look around my portfolio to see my projects, achievements, and experiences.</p>
+    <p>Hi, I'm Sarthak Dudhe, a Computer Engineering student at Datta Meghe College of Engineering. Throughout my academic journey, I've developed a solid understanding of computer science fundamentals, including programming languages, data structures, and algorithms. I'm particularly passionate about MERN stack development, with a focus on building scalable and efficient web applications. Additionally, I'm interested in Python and Data Science.Take a look around my portfolio to see my projects, achievements, and experiences.</p>
 </div>
 
 </div>
