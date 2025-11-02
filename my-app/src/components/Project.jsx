@@ -1,63 +1,105 @@
-import React from 'react';
-import "./Project.css"
-import cbs from "../assets/CBSJAVA.png"
-import amazon from "../assets/amazonclone.png"
-import game from "../assets/game.png"
+import React from "react";
+import { motion } from "framer-motion";
+import "./Project.css";
+import cbs from "../assets/CBSJAVA.png";
+import prepgenie from "../assets/Prepgenie.png";
+import chat from "../assets/Quickchat.png";
+
 const projects = [
   {
     id: 1,
     title: "Cab Booking System",
-    description: "A cab booking system built with java allowing users to book cabs track rides and manage bookings",
+    description:
+      "A Java-based cab booking system that allows users to book cabs, track rides, and manage bookings efficiently.",
     image: cbs,
-    tags: ["Core Java", "Java Swing", "MySQL"]
+    tags: ["Core Java", "Java Swing", "MySQL"],
+    liveLink: "https://github.com/SarthakDudhe/CabBookingSystem",
+    githubLink: "https://github.com/SarthakDudhe/CabBookingSystem",
   },
   {
     id: 2,
-    title: "Amazon Clone",
-    description: "A frontend clone of Amazon E-commerce Website Build using HTML and Css",
-    image: amazon,
-    tags: ["HTML", "CSS" ]
+    title: "Prepgenie",
+    description:
+      "PrepGenie is a user-friendly platform that helps you prepare for interviews step by step. You can create your own practice sessions, choose different topics like algorithms or system design, and get questions in a clean and easy-to-use interface.",
+    image: prepgenie,
+    tags: ["React", "MongoDB","Tailwindcss","Express","Node","GeminiApi"],
+    liveLink: "https://prep-genie-k3cd.vercel.app/",
+    githubLink: "https://github.com/SarthakDudhe/PrepGenie",
   },
   {
     id: 3,
-    title: "Tic Tac Toe",
-    description: "A web based Tic Tac Toe game buld with HTML,CSS and Javascript.The game allows two players to take turns marking spaces on a 3x3 grid",
-    image: game,
-    tags: ["Javascript", "HTML", "CSS"]
-  }//,
-//   {
-//     id: 4,
-//     title: "Smart Home App",
-//     description: "IoT-based home automation system with voice control and energy monitoring.",
-//     image: "https://images.unsplash.com/photo-1558002038-bb4237b50b11?auto=format&fit=crop&q=80&w=1000",
-//     tags: ["IoT", "React Native", "Node.js"]
-//   }
+    title: "QuickChat - Chat Application ",
+    description:
+      "Built a secure, real-time chat platform using Socket.IO with authentication and instant messaging.Developed RESTful APIs with Node.js/Express.js and integrated MongoDB for persistent message storage",
+    image: chat,
+    tags: ["React", "MongoDB","Tailwindcss","Express","Node"],
+    liveLink: "https://chat-application-eight-wine.vercel.app/login",
+    githubLink: "https://github.com/SarthakDudhe/ChatApplication",
+  },
 ];
 
-function Project() {
+const Project = () => {
   return (
-    <div className="container" id='projects'>
-     <div className="text"><h1 >Projects</h1></div>
+    <section className="projects-section" id="projects">
+      <div className="projects-header">
+        <h1>Projects</h1>
+        <p className="projects-subtitle">
+          Explore some of my recent works showcasing diverse technologies and designs.
+        </p>
+      </div>
+
       <div className="projects-grid">
         {projects.map((project) => (
-          <div key={project.id} className="project-card">
-            <img 
-              src={project.image} 
-              alt={project.title} 
+          <motion.div
+            key={project.id}
+            className="project-card"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <img
+              src={project.image}
+              alt={project.title}
               className="project-image"
             />
-            <h3 className="project-title">{project.title}</h3>
-            <p className="project-description">{project.description}</p>
-            <div className="project-tags">
-              {project.tags.map((tag, index) => (
-                <span key={index} className="tag">{tag}</span>
-              ))}
+
+            <div className="project-content">
+              <h3 className="project-title">{project.title}</h3>
+              <p className="project-description">{project.description}</p>
+
+              <div className="project-tags">
+                {project.tags.map((tag, index) => (
+                  <span key={index} className="tag">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <div className="project-buttons">
+                <a
+                  href={project.liveLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn live-btn"
+                >
+                  🔗 Live Demo
+                </a>
+                <a
+                  href={project.githubLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn github-btn"
+                >
+                  💻 GitHub
+                </a>
+              </div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
-    </div>
+    </section>
   );
-}
+};
 
 export default Project;

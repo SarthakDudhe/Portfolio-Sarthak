@@ -19,6 +19,8 @@ export default function About() {
     </div>
 
     <h1>Experience</h1>
+    <p>Ex. AIML Intern</p>
+    <p>Elevate Labs</p>
 </div>
 <div className="education">
 <div className="icon">
