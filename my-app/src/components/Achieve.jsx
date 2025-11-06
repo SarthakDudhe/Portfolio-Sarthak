@@ -3,6 +3,7 @@ import { motion, AnimatePresence, useMotionValue, useTransform } from "framer-mo
 import { ExternalLink, X } from "lucide-react";
 import machineLearning from "../assets/ML_Certificate.png"
 import java from "../assets/Java.jpg"
+import MySQL from "../assets/MySQL.jpg"
 import "./Achieve.css";
 
 const certificateData = [
@@ -26,12 +27,12 @@ const certificateData = [
   },
   {
     id: 3,
-    title: "C++ Masterclass",
+    title: "MySQL",
     issuer: "Udemy",
-    date: "2024",
+    date: "6 Nov 2025",
     description:
-      "Demonstrated strong understanding of object-oriented concepts and algorithms in C++.",
-    image: "/certificates/cpp.jpg",
+      "Completed a comprehensive MySQL course covering database design, querying, joins, indexing, and CRUD operations. Gained hands-on experience in managing relational data and optimizing SQL performance.",
+    image: MySQL,
   },
 ];
 

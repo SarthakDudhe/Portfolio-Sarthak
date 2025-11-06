@@ -28,7 +28,7 @@ return<div className="front-page" id="home">
 </div>
 <div className="contactme">
  <a href="#contact"><button type="button"><h2>Contact</h2> </button></a>
- <a href="https://drive.google.com/file/d/1_UC_SaIfKPxH0wQB8snuY22ZzhM8yQut/view?usp=drive_link"><button type="button" id="cv"><h2>Download CV</h2>  </button></a>
+ <a href="https://drive.google.com/file/d/1GfO7jEMM66D4dz8eMH3HZ3SzqEWl5NJK/view?usp=drive_link"><button type="button" id="cv"><h2>Download CV</h2>  </button></a>
 
 </div>   
 </div>
