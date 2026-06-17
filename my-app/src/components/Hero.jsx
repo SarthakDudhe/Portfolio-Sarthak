@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Contact from "./Contact";
 import 'animate.css';
+import UnicornScene from "unicornstudio-react";
 
 // Import integrated UI components
 import { SplineScene } from "./ui/splite";
@@ -15,6 +16,18 @@ function Hero()
 {
   return (
     <div className="front-page relative overflow-hidden" id="home">
+      {/* Background Unicorn Scene */}
+      <div className="absolute inset-0 z-0 opacity-40 pointer-events-none">
+        <UnicornScene
+          projectId="fNLVDSG4a2v3BFJraMiI"
+          width="100%"
+          height="100%"
+          scale={1}
+          dpi={1.5}
+          sdkUrl="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v2.2.5/dist/unicornStudio.umd.js"
+        />
+      </div>
+
       <Spotlight
         className="-top-40 left-0 md:left-60 md:-top-20"
         fill="white"
