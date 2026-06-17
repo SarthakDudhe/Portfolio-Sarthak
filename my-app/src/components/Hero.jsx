@@ -10,7 +10,7 @@ import UnicornScene from "unicornstudio-react";
 import { SplineScene } from "./ui/splite";
 import { Card } from "./ui/card";
 import { Spotlight } from "./ui/spotlight";
-import { AnimatedText } from "./ui/animated-shiny-text";
+import { RevealText } from "./ui/reveal-text";
 
 function Hero()
 {
@@ -35,12 +35,16 @@ function Hero()
       
       <div className="hero-container">
         <div className="hero-left z-10">
-          <h1><AnimatedText 
-            text="SARTHAK" 
-            className="inline-flex py-0 my-0 align-baseline" 
-            textClassName="text-[inherit] font-bold inline-block leading-none"
-            hoverEffect={true}
-          /></h1>
+          <RevealText 
+            text="SARTHAK"
+            textColor="text-white"
+            overlayColor="text-red-500"
+            fontSize="text-5xl md:text-7xl lg:text-[100px]"
+            letterDelay={0.08}
+            overlayDelay={0.05}
+            overlayDuration={0.4}
+            springDuration={600}
+          />
         </div>
         
         <div className="hero-center relative z-10">
@@ -51,12 +55,16 @@ function Hero()
         </div>
 
         <div className="hero-right z-10">
-          <h1><AnimatedText 
-            text="DUDHE" 
-            className="inline-flex py-0 my-0 align-baseline" 
-            textClassName="text-[inherit] font-bold inline-block leading-none"
-            hoverEffect={true}
-          /></h1>
+          <RevealText 
+            text="DUDHE"
+            textColor="text-white"
+            overlayColor="text-red-500"
+            fontSize="text-5xl md:text-7xl lg:text-[100px]"
+            letterDelay={0.08}
+            overlayDelay={0.05}
+            overlayDuration={0.4}
+            springDuration={600}
+          />
         </div>
       </div>
     </div>
