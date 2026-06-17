@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ExternalLink, Github } from "lucide-react";
+import { motion } from "framer-motion";
 import cbs from "../assets/CBSJAVA.png";
 import prepgenie from "../assets/Prepgenie.png";
 import chat from "../assets/Quickchat.png";
@@ -80,49 +81,53 @@ const Project = () => {
           className="projects-scroll-container flex overflow-x-auto gap-12 py-10 w-full snap-x snap-mandatory scroll-smooth no-scrollbar px-[10vw] md:px-[15vw]"
         >
           {projects.map((project) => (
-            <div
+            <motion.div
               key={project.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
               className="project-card-container relative snap-center flex-shrink-0 py-8 px-4 group overflow-visible isolate"
             >
-              {/* LAYER 1 — OUTER GLOW (behind card) */}
+              {/* LAYER 1 — MULTICOLOR GLOW (behind card) */}
               <div
-                className="absolute inset-0 pointer-events-none rounded-[36px] transition-all duration-300 ease-out scale-[1.08] group-hover:scale-[1.10] opacity-60 group-hover:opacity-75 blur-[55px] group-hover:blur-[60px] z-0"
+                className="project-glow"
                 style={{
                   background: project.gradient,
                 }}
               />
 
-              {/* LAYER 2 — GRADIENT BORDER */}
+              {/* LAYER 2 — GRADIENT BORDER & LAYER 3 — CARD SURFACE */}
               <div
-                className="project-row-card relative z-10 w-[80vw] md:w-[70vw] min-w-[280px] max-w-[850px] rounded-[36px] overflow-hidden border-[8px] border-transparent flex flex-col md:flex-row transition-all duration-300 ease-out group-hover:scale-[1.02] group-hover:-translate-y-1.5 cursor-default"
+                className="project-card"
                 style={{
-                  background: `linear-gradient(#0B0B0D, #0B0B0D) padding-box, ${project.gradient} border-box`,
+                  '--project-gradient': project.gradient,
                 }}
               >
-                {/* Left Side: Image (LAYER 3 — CONTENT SURFACE) */}
-                <div className="project-card-image-wrapper relative z-20 w-full md:w-1/2 h-[180px] xs:h-[220px] md:h-full overflow-hidden">
+                {/* Top Section: Image */}
+                <div className="project-card-image-wrapper w-full h-[58%] overflow-hidden relative">
                   <img
                     src={project.image}
                     alt={project.title}
                     className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/40 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
                 </div>
 
-                {/* Right Side: Content (LAYER 3 — CONTENT SURFACE) */}
-                <div className="project-card-content relative z-20 w-full md:w-1/2 p-6 md:p-8 flex flex-col justify-between text-left">
+                {/* Bottom Section: Content */}
+                <div className="project-card-content w-full h-[42%] p-5 sm:p-6 md:p-7 flex flex-col justify-between text-left">
                   <div>
-                    <h3 className="text-white font-semibold text-xl md:text-2xl mb-3 md:mb-4 tracking-tight group-hover:text-blue-400 transition-colors">
+                    <h3 className="text-white font-semibold text-lg md:text-xl mb-2 tracking-tight transition-colors">
                       {project.title}
                     </h3>
-                    <p className="text-gray-400 text-xs md:text-sm leading-relaxed mb-4 md:mb-5 line-clamp-4 md:line-clamp-none font-normal">
+                    <p className="text-white/70 text-xs md:text-sm leading-relaxed mb-3 line-clamp-3 font-normal">
                       {project.description}
                     </p>
-                    <div className="flex flex-wrap gap-2 mb-4 md:mb-6">
+                    <div className="flex flex-wrap gap-1.5 mb-3">
                       {project.tags.map((tag, idx) => (
                         <span
                           key={idx}
-                          className="px-3 py-1 rounded-full bg-white/5 border border-white/5 text-gray-400 text-[10px] md:text-xs font-normal"
+                          className="px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 text-white/60 text-[9px] md:text-[11px] font-normal"
                         >
                           {tag}
                         </span>
@@ -130,28 +135,30 @@ const Project = () => {
                     </div>
                   </div>
 
-                  {/* Buttons at bottom */}
-                  <div className="flex gap-4">
+                  {/* Buttons Section */}
+                  <div className="flex gap-3 w-full mt-auto">
                     <a
                       href={project.liveLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs md:text-sm font-medium transition-all shadow-lg shadow-blue-600/15 cursor-pointer"
+                      className="flex-1 flex items-center justify-center gap-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-full text-xs md:text-sm font-medium transition-all hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:scale-[1.02] cursor-pointer"
                     >
-                      🔗 Demo
+                      <ExternalLink size={14} className="md:size-4" />
+                      <span>Live Demo</span>
                     </a>
                     <a
                       href={project.githubLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-5 py-2.5 bg-[#1C1C1E] border border-white/10 hover:bg-[#2C2C2E] text-white rounded-xl text-xs md:text-sm font-medium transition-all cursor-pointer"
+                      className="flex-1 flex items-center justify-center gap-1.5 px-4 py-2 bg-white/5 border border-white/10 hover:bg-white/10 text-white rounded-full text-xs md:text-sm font-medium transition-all hover:shadow-[0_0_15px_rgba(255,255,255,0.15)] hover:scale-[1.02] cursor-pointer backdrop-blur-sm"
                     >
-                      💻 GitHub
+                      <Github size={14} className="md:size-4" />
+                      <span>GitHub</span>
                     </a>
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
