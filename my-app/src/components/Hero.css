@@ -194,4 +194,62 @@
     }
 }
 
+/* Spotlight Animation */
+@keyframes spotlight {
+  0% {
+    opacity: 0;
+    transform: translate(-72%, -62%) scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -40%) scale(1);
+  }
+}
+
+.animate-spotlight {
+  animation: spotlight 2s ease 0.75s 1 normal forwards;
+}
+
+/* Hero UI Card Overrides */
+.hero-card {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* 3D Spline Scene Styles */
+.spline-scene-3d {
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .spline-scene-3d {
+    min-height: 350px;
+  }
+}
+
+/* Responsive alignment adjustments for 3D Spline Scene on Desktop viewports */
+@media (min-width: 769px) and (max-width: 1350px) {
+  .hero-container {
+    flex-wrap: nowrap !important;
+    height: auto !important;
+    padding-top: 120px !important;
+  }
+  .my-pic {
+    width: 450px !important;
+    height: 450px !important;
+    margin-left: 40px !important;
+  }
+}
+
+@media (min-width: 1351px) {
+  .hero-container {
+    flex-wrap: nowrap !important;
+  }
+}
+
+
 
