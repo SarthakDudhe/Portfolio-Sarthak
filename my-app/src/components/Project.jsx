@@ -1,9 +1,7 @@
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import React from "react";
+import { motion } from "framer-motion";
+import { Monitor, Palette, Zap } from "lucide-react";
 import "./Project.css";
-import cbs from "../assets/CBSJAVA.png";
-import prepgenie from "../assets/Prepgenie.png";
-import chat from "../assets/Quickchat.png";
 
 const projects = [
   {
@@ -11,133 +9,122 @@ const projects = [
     title: "Cab Booking System",
     description:
       "A Java-based cab booking system that allows users to book cabs, track rides, and manage bookings efficiently.",
-    image: cbs,
-    tags: ["Core Java", "Java Swing", "MySQL"],
+    icon: <Monitor size={32} strokeWidth={2.5} />,
+    gradient: "linear-gradient(137deg, #FF3D77 0%, #FFB1CE 45%, #FF9D3C 100%)",
+    delay: 0.1,
     liveLink: "https://github.com/SarthakDudhe/CabBookingSystem",
     githubLink: "https://github.com/SarthakDudhe/CabBookingSystem",
-    glowColor: "#00b4ff",
-    glowShadow: "rgba(0, 180, 255, 0.12)",
-    glowShadowActive: "rgba(0, 180, 255, 0.25)",
   },
   {
     id: 2,
     title: "Prepgenie",
     description:
-      "PrepGenie is a user-friendly platform that helps you prepare for interviews step by step. You can create your own practice sessions, choose different topics like algorithms or system design, and get questions in a clean and easy-to-use interface.",
-    image: prepgenie,
-    tags: ["React", "MongoDB", "Tailwindcss", "Express", "Node", "GeminiApi"],
+      "PrepGenie is a platform that helps you prepare for interviews step by step. You can create your own practice sessions, choose different topics like algorithms or system design, and get questions in a clean and easy-to-use interface.",
+    icon: <Palette size={32} strokeWidth={2.5} />,
+    gradient: "linear-gradient(137deg, #FFFFFF 0%, #7DD3FC 45%, #06B6D4 100%)",
+    delay: 0.2,
     liveLink: "https://prep-genie-k3cd.vercel.app/",
     githubLink: "https://github.com/SarthakDudhe/PrepGenie",
-    glowColor: "#ff007a",
-    glowShadow: "rgba(255, 0, 122, 0.12)",
-    glowShadowActive: "rgba(255, 0, 122, 0.25)",
   },
   {
     id: 3,
-    title: "QuickChat - Chat Application ",
+    title: "QuickChat",
     description:
-      "Built a secure, real-time chat platform using Socket.IO with authentication and instant messaging.Developed RESTful APIs with Node.js/Express.js and integrated MongoDB for persistent message storage",
-    image: chat,
-    tags: ["React", "MongoDB", "Tailwindcss", "Express", "Node"],
+      "Built a secure, real-time chat platform using Socket.IO with authentication and instant messaging. Developed RESTful APIs with Node.js/Express.js and integrated MongoDB for message storage.",
+    icon: <Zap size={32} strokeWidth={2.5} />,
+    gradient: "linear-gradient(137deg, #4361EE 0%, #E0AEFF 45%, #F72585 100%)",
+    delay: 0.3,
     liveLink: "https://chat-application-eight-wine.vercel.app/login",
     githubLink: "https://github.com/SarthakDudhe/ChatApplication",
-    glowColor: "#39ff14",
-    glowShadow: "rgba(57, 255, 20, 0.12)",
-    glowShadowActive: "rgba(57, 255, 20, 0.25)",
   },
 ];
 
-const ProjectCard = ({ project, index, total }) => {
-  const containerRef = useRef(null);
-  
-  // Track scroll position of the wrapper relative to the viewport
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"],
-  });
-
-  const isLast = index === total - 1;
-
-  // Map scrollYProgress to scale, opacity and y translation for 3D depth
-  const scale = useTransform(scrollYProgress, [0, 1], [1, isLast ? 1 : 0.92]);
-  const opacity = useTransform(scrollYProgress, [0, 1], [1, isLast ? 1 : 0.4]);
-  const y = useTransform(scrollYProgress, [0, 1], [0, isLast ? 0 : -20]);
-
+const FeatureCard = ({ title, description, icon, gradient, delay, liveLink, githubLink }) => {
   return (
-    <div ref={containerRef} className="project-card-wrapper">
-      <motion.div
-        className="project-card"
+    <motion.div
+      className="relative flex flex-col justify-start items-start w-full max-w-[260px] md:max-w-[300px] group mx-auto"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.8, ease: "easeOut", delay }}
+    >
+      {/* Glow Background */}
+      <div
+        className="absolute inset-0 w-full h-[260px] md:h-[300px] opacity-60 rounded-[40px] pointer-events-none"
         style={{
-          scale,
-          opacity,
-          y,
-          top: `calc(120px + ${index * 30}px)`,
-          "--card-glow-color": project.glowColor,
-          "--card-glow-shadow": project.glowShadow,
-          "--card-glow-shadow-active": project.glowShadowActive,
+          background: gradient,
+          filter: "blur(45px)",
+        }}
+      />
+      {/* Foreground Card with Gradient Border */}
+      <div
+        className="relative self-stretch h-[260px] md:h-[300px] rounded-[40px] z-10 overflow-hidden border-[8px] border-transparent"
+        style={{
+          background: `linear-gradient(#1A1A1C, #1A1A1C) padding-box, ${gradient} border-box`,
         }}
       >
-        <div className="project-image-container">
-          <img
-            src={project.image}
-            alt={project.title}
-            className="project-image"
-          />
-        </div>
-
-        <div className="project-content">
-          <h3 className="project-title">{project.title}</h3>
-          <p className="project-description">{project.description}</p>
-
-          <div className="project-tags">
-            {project.tags.map((tag, idx) => (
-              <span key={idx} className="tag">
-                {tag}
-              </span>
-            ))}
+        <div className="w-full h-full p-7 flex flex-col justify-between">
+          <div className="flex flex-col items-start text-left">
+            <div className="text-white/90 mb-4">{icon}</div>
+            <h3 className="text-white font-medium text-xl mb-3 tracking-tight">
+              {title}
+            </h3>
+            <p className="text-gray-400 text-[14px] leading-[1.6] font-normal selection:bg-white/20">
+              {description}
+            </p>
           </div>
-
-          <div className="project-buttons">
+          
+          {/* Project Links */}
+          <div className="flex gap-4 mt-2 z-20">
             <a
-              href={project.liveLink}
+              href={liveLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn live-btn"
+              className="text-xs text-blue-400 hover:text-blue-300 font-medium transition-colors cursor-pointer"
             >
-              🔗 Live Demo
+              🔗 Demo
             </a>
             <a
-              href={project.githubLink}
+              href={githubLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn github-btn"
+              className="text-xs text-gray-400 hover:text-white font-medium transition-colors cursor-pointer"
             >
               💻 GitHub
             </a>
           </div>
         </div>
-      </motion.div>
-    </div>
+      </div>
+    </motion.div>
   );
 };
 
 const Project = () => {
   return (
-    <section className="projects-section" id="projects">
-      <div className="projects-header">
-        <h1>Projects</h1>
-        <p className="projects-subtitle">
+    <section
+      className="projects-section min-h-screen bg-[#0A0A0B] flex flex-col items-center justify-center p-6 md:p-12 font-sans relative overflow-hidden"
+      id="projects"
+    >
+      <div className="projects-header mb-12 text-center z-10">
+        <h1 className="text-white font-medium text-3xl md:text-4xl mb-4 tracking-tight">
+          Projects
+        </h1>
+        <p className="text-gray-400 text-base max-w-lg mx-auto">
           Explore some of my recent works showcasing diverse technologies and designs.
         </p>
       </div>
 
-      <div className="projects-list">
-        {projects.map((project, index) => (
-          <ProjectCard
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-3 lg:gap-3 w-full max-w-[936px] z-10">
+        {projects.map((project) => (
+          <FeatureCard
             key={project.id}
-            project={project}
-            index={index}
-            total={projects.length}
+            title={project.title}
+            description={project.description}
+            icon={project.icon}
+            gradient={project.gradient}
+            delay={project.delay}
+            liveLink={project.liveLink}
+            githubLink={project.githubLink}
           />
         ))}
       </div>
