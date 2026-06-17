@@ -45,14 +45,6 @@ function Hero()
           <div className="wrapper">
             <div className="typing-demo">
               <h1>Student</h1>
-            </div>
-          </div>
-
-          <div className="contactme">
-            <a href="#contact"><button type="button"><h2>Contact</h2></button></a>
-            <a href="https://drive.google.com/file/d/1GfO7jEMM66D4dz8eMH3HZ3SzqEWl5NJK/view?usp=drive_link">
-              <button type="button" id="cv"><h2>Download CV</h2></button>
-            </a>
           </div>
         </div>
         
