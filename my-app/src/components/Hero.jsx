@@ -48,14 +48,6 @@ function Hero()
             </div>
           </div>
 
-          <div className="quote">
-            <p>
-              Computer Engineer by degree,tech enthusiast by passion.<br />
-              Currently exploring the realms of MERN Stack and Java development.<br />
-              Let's connect and create something amazing!
-            </p>
-          </div>
-          
           <div className="contactme">
             <a href="#contact"><button type="button"><h2>Contact</h2></button></a>
             <a href="https://drive.google.com/file/d/1GfO7jEMM66D4dz8eMH3HZ3SzqEWl5NJK/view?usp=drive_link">
