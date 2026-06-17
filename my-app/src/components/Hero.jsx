@@ -35,8 +35,7 @@ function Hero()
       
       <div className="hero-container">
         <div className="hero-left z-10">
-          <h1>Hi,</h1>
-          <h1>I'm <AnimatedText 
+          <h1><AnimatedText 
             text="SARTHAK" 
             className="inline-flex py-0 my-0 align-baseline" 
             textClassName="text-[inherit] font-bold inline-block leading-none"
@@ -58,11 +57,6 @@ function Hero()
             textClassName="text-[inherit] font-bold inline-block leading-none"
             hoverEffect={true}
           /></h1>
-          <div className="wrapper">
-            <div className="typing-demo">
-              <h1>Student</h1>
-            </div>
-          </div>
         </div>
       </div>
     </div>
