@@ -4,7 +4,7 @@ import Hero from './components/Hero'
 import About from './components/About'
 import Card from './components/Card'
 import Project from './components/Project'
-import CtaFooter from './components/CtaFooter'
+import Footer from './components/Footer'
 import Contact from './components/Contact'
 import Achieve from './components/Achieve'
 import {Route,Routes,BrowserRouter} from "react-router-dom"
@@ -19,7 +19,7 @@ function App() {
 
     <BrowserRouter>
     <Navbar/>    
-    <CtaFooter/>
+    <Footer/>
    
     </BrowserRouter>
      
