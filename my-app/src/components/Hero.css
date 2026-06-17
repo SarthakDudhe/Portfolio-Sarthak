@@ -6,22 +6,47 @@
     height: 710px;
     font-size: 30px;
     padding-top: 100px;
-   flex-wrap: wrap;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.my-intro{
-    
-    align-items: center;
+.hero-left{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    padding-right: 30px;
     justify-content: center;
-    padding-left: 20px;
-    padding-top: 30px;
-    
 }
-.my-intro h1{
+.hero-left h1{
     color: #ffffff;
 }
-.my-intro span{
+.hero-left span{
     color: #0000ff;
+}
+
+.hero-center{
+    width: 500px;
+    height: 500px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-shrink: 0;
+}
+
+.hero-right{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    padding-left: 30px;
+    justify-content: center;
+}
+.hero-right h1{
+    color: #ffffff;
 }
 
 .typing-demo{
@@ -93,15 +118,7 @@
     border-color: blue;
 }
 
-.my-pic{
-    height: 550px;
-    width: 700px;
-    align-items: center;
-    justify-content: center;
-    margin-left: 130px;
-    display: flex;
-
-}
+/* hero-center is handled at top */
 
 
 
@@ -146,31 +163,51 @@
         flex-direction: column; /* Stack items vertically */
         height: auto; /* Adjust height for content */
         padding-top: 50px; /* Reduce padding */
+        flex-wrap: wrap !important;
     }
 
-    .my-intro {
-        padding-left: 10px; /* Adjust padding for smaller screens */
-        padding-top: 20px; /* Reduce top padding */
-        text-align: center; /* Center-align text for better readability */
+    .hero-left {
+        order: 1;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 20px;
+        text-align: center;
+        align-items: center;
+        width: 100%;
     }
 
-    .my-intro h1 {
+    .hero-left h1 {
         font-size: 24px; /* Reduce font size for headings */
     }
 
-    .my-pic {
-        height: auto; /* Allow image to adjust based on content */
-        width: 100%; /* Use full width */
-        margin-left: 0; /* Reset left margin */
-        justify-content: center; /* Center the image */
+    .hero-center {
+        order: 3;
+        height: auto;
+        width: 100%;
+        margin-left: 0;
+        justify-content: center;
+        padding: 20px 0;
     }
 
-    .my-pic img {
+    .hero-center img {
         height: auto; /* Adjust height dynamically */
         width: 100%; /* Ensure it stays within container limits */
         max-width: 300px; /* Set a max width for scaling */
         display: block; /* Ensure the image remains visible */
         margin: 0 auto; /* Center the image */
+    }
+
+    .hero-right {
+        order: 2;
+        padding-left: 10px;
+        padding-right: 10px;
+        text-align: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .hero-right h1 {
+        font-size: 24px;
     }
 
     .contactme {
@@ -238,10 +275,10 @@
     height: auto !important;
     padding-top: 120px !important;
   }
-  .my-pic {
-    width: 450px !important;
-    height: 450px !important;
-    margin-left: 40px !important;
+  .hero-center {
+    width: 400px !important;
+    height: 400px !important;
+    margin-left: 0 !important;
   }
 }
 

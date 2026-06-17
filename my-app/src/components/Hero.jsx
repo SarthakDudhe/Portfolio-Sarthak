@@ -34,10 +34,26 @@ function Hero()
       />
       
       <div className="hero-container">
-        <div className="my-intro z-10">
+        <div className="hero-left z-10">
           <h1>Hi,</h1>
           <h1>I'm <AnimatedText 
-            text="Sarthak Dudhe" 
+            text="SARTHAK" 
+            className="inline-flex py-0 my-0 align-baseline" 
+            textClassName="text-[inherit] font-bold inline-block leading-none"
+            hoverEffect={true}
+          /></h1>
+        </div>
+        
+        <div className="hero-center relative z-10">
+          <SplineScene 
+            scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+            className="w-full h-full spline-scene-3d"
+          />
+        </div>
+
+        <div className="hero-right z-10">
+          <h1><AnimatedText 
+            text="DUDHE" 
             className="inline-flex py-0 my-0 align-baseline" 
             textClassName="text-[inherit] font-bold inline-block leading-none"
             hoverEffect={true}
@@ -47,13 +63,6 @@ function Hero()
               <h1>Student</h1>
             </div>
           </div>
-        </div>
-        
-        <div className="my-pic relative z-10">
-          <SplineScene 
-            scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-            className="w-full h-full spline-scene-3d"
-          />
         </div>
       </div>
     </div>
