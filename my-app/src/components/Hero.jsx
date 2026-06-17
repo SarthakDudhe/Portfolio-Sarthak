@@ -45,6 +45,7 @@ function Hero()
           <div className="wrapper">
             <div className="typing-demo">
               <h1>Student</h1>
+            </div>
           </div>
         </div>
         
