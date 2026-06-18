@@ -166,7 +166,7 @@ const Project = () => {
                       href={project.liveLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="items-center justify-center whitespace-nowrap rounded-md text-sm font-bold transition-all duration-200 cursor-pointer bg-white text-black hover:bg-neutral-200 hover:scale-105 active:scale-95 h-10 px-4 py-2 inline-flex w-[48%] text-center shadow-[0_4px_15px_rgba(255,255,255,0.15)] hover:shadow-[0_4px_25px_rgba(255,255,255,0.35)] flex gap-2 justify-center"
+                      className="items-center justify-center whitespace-nowrap rounded-md text-sm font-bold transition-all duration-200 cursor-pointer bg-white text-black hover:bg-neutral-200 hover:scale-105 active:scale-95 h-10 px-2 py-1 inline-flex w-[48%] text-center shadow-[0_4px_15px_rgba(255,255,255,0.15)] hover:shadow-[0_4px_25px_rgba(255,255,255,0.35)] flex gap-2 justify-center"
                     >
                       <ExternalLink size={14} />
                       <span>Live Demo</span>
