@@ -7,6 +7,8 @@
     min-height: 100vh;
     font-size: 30px;
     padding-top: 80px;
+    padding-left: 80px;
+    padding-right: 80px;
     flex-wrap: nowrap;
     align-items: center;
     justify-content: space-between;
@@ -166,6 +168,8 @@
         flex-direction: column; /* Stack items vertically */
         height: auto; /* Adjust height for content */
         padding-top: 50px; /* Reduce padding */
+        padding-left: 20px;
+        padding-right: 20px;
         flex-wrap: wrap !important;
     }
 
@@ -278,6 +282,8 @@
     height: 100vh !important;
     min-height: 100vh !important;
     padding-top: 80px !important;
+    padding-left: 50px !important;
+    padding-right: 50px !important;
   }
   .hero-center {
     width: 550px !important;
