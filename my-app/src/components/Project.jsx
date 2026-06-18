@@ -91,92 +91,72 @@ const Project = () => {
               className="snap-center flex-shrink-0 overflow-visible py-4"
             >
               <CardContainer containerClassName="py-0 px-2 sm:px-4">
-                <CardBody
-                  className="project-card relative group/card border-white/10 w-[82vw] sm:w-[28rem] md:w-[30rem] h-auto rounded-[30px] p-6 border shadow-[0_10px_35px_rgba(0,0,0,0.6)] flex flex-col justify-between text-left overflow-visible"
-                  style={{
-                    '--project-gradient': project.gradient,
-                  }}
-                >
-                  {/* LAYER 1 — MULTICOLOR GLOW (behind card content, tilting in 3D) */}
-                  <div
-                    className="project-glow opacity-30 group-hover/card:opacity-60 transition-opacity duration-300 absolute inset-0 scale-[1.05] blur-[40px] pointer-events-none rounded-[30px]"
-                    style={{
-                      background: project.gradient,
-                      zIndex: -1,
-                    }}
-                  />
-
+                <CardBody className="bg-[#0b0b0f]/80 backdrop-blur-md relative group/card dark:hover:shadow-2xl dark:hover:shadow-white/[0.05] dark:border-white/[0.15] border-black/[0.1] w-[82vw] sm:w-[30rem] h-auto rounded-3xl p-6 border flex flex-col justify-between text-left overflow-visible shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
                   <div>
-                    {/* Top Section: Title & Description */}
+                    {/* Title */}
                     <CardItem
                       translateZ="50"
-                      className="text-white font-bold text-lg md:text-xl mb-1 tracking-tight"
+                      className="text-2xl font-extrabold text-neutral-600 dark:text-white tracking-tight"
                     >
                       {project.title}
-                    </CardItem>
-                    <CardItem
-                      as="p"
-                      translateZ="60"
-                      className="text-white/70 text-xs md:text-sm leading-relaxed mb-4 font-normal"
-                    >
-                      {project.description}
-                    </CardItem>
-
-                    {/* Middle Section: Image */}
-                    <CardItem
-                      translateZ="100"
-                      rotateX={10}
-                      rotateZ={-2}
-                      className="w-full mb-5 overflow-hidden rounded-2xl border border-white/10"
-                    >
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-48 sm:h-52 md:h-56 object-cover group-hover/card:scale-[1.05] transition-transform duration-500"
-                      />
                     </CardItem>
 
                     {/* Tech Tags */}
                     <CardItem
                       translateZ="40"
-                      className="flex flex-wrap gap-1.5 mb-6"
+                      className="flex flex-wrap gap-1.5 mt-3"
                     >
                       {project.tags.map((tag, idx) => (
                         <span
                           key={idx}
-                          className="px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 text-white/60 text-[9px] md:text-[11px] font-normal"
+                          className="px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 text-white/50 text-[10px] font-medium tracking-wide uppercase"
                         >
                           {tag}
                         </span>
                       ))}
                     </CardItem>
+
+                    {/* Image */}
+                    <CardItem
+                      translateZ="100"
+                      rotateX={15}
+                      rotateZ={-8}
+                      className="w-full mt-6 overflow-hidden rounded-2xl border border-white/10 shadow-2xl"
+                    >
+                      <img
+                        src={project.image}
+                        height="1000"
+                        width="1000"
+                        className="h-60 w-full object-cover rounded-xl group-hover/card:scale-[1.03] transition-transform duration-500"
+                        alt={project.title}
+                      />
+                    </CardItem>
                   </div>
 
-                  {/* Bottom Section: Buttons */}
-                  <div className="flex justify-between items-center mt-2 w-full">
+                  {/* Buttons */}
+                  <div className="flex justify-between items-center mt-12">
                     <CardItem
-                      translateZ={30}
-                      translateX={-15}
+                      translateZ={20}
+                      translateX={-30}
                       as="a"
                       href={project.githubLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-4 py-2 rounded-xl text-xs font-medium text-white flex items-center gap-1.5 border border-white/10 hover:bg-white/5 transition-colors cursor-pointer"
+                      className="px-4 py-2.5 rounded-xl text-xs font-semibold text-neutral-400 dark:text-neutral-300 border border-white/10 hover:border-white/30 hover:bg-white/5 hover:text-white transition-all flex items-center gap-2 cursor-pointer"
                     >
-                      <Github size={14} className="md:size-4" />
+                      <Github size={14} />
                       <span>GitHub</span>
                     </CardItem>
-
                     <CardItem
-                      translateZ={30}
-                      translateX={15}
+                      translateZ={20}
+                      translateX={30}
                       as="a"
                       href={project.liveLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-4 py-2 rounded-xl bg-blue-600 text-white text-xs font-bold flex items-center gap-1.5 hover:bg-blue-500 transition-colors cursor-pointer shadow-[0_4px_20px_rgba(59,130,246,0.3)]"
+                      className="px-5 py-2.5 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold hover:bg-neutral-200 transition-all flex items-center gap-2 cursor-pointer shadow-[0_4px_20px_rgba(255,255,255,0.15)] hover:shadow-[0_4px_25px_rgba(255,255,255,0.35)]"
                     >
-                      <ExternalLink size={14} className="md:size-4" />
+                      <ExternalLink size={14} />
                       <span>Live Demo</span>
                     </CardItem>
                   </div>
