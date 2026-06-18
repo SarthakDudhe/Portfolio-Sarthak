@@ -192,7 +192,7 @@
 
     .hero-center {
         order: 3;
-        height: 440px;
+        height: 380px;
         width: 100%;
         margin-left: 0;
         justify-content: center;
@@ -278,6 +278,8 @@
   .spline-scene-3d {
     min-height: 100% !important;
     height: 100% !important;
+    transform: scale(1.45) !important;
+    transform-origin: center center !important;
   }
 }
 
