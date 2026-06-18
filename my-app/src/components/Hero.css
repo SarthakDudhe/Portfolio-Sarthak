@@ -192,11 +192,13 @@
 
     .hero-center {
         order: 3;
-        height: auto;
+        height: 320px;
         width: 100%;
         margin-left: 0;
         justify-content: center;
-        padding: 20px 0;
+        align-items: center;
+        display: flex;
+        padding: 10px 0;
     }
 
     .hero-center img {
@@ -274,7 +276,8 @@
 
 @media (max-width: 768px) {
   .spline-scene-3d {
-    min-height: 350px;
+    min-height: 100% !important;
+    height: 100% !important;
   }
 }
 
