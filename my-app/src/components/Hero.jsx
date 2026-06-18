@@ -39,7 +39,7 @@ function Hero()
             text="SARTHAK"
             textColor="text-white"
             overlayColor="text-red-500"
-            fontSize="text-5xl md:text-7xl lg:text-[100px]"
+            fontSize="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-[100px]"
             letterDelay={0.08}
             overlayDelay={0.05}
             overlayDuration={0.4}
@@ -59,7 +59,7 @@ function Hero()
             text="DUDHE"
             textColor="text-white"
             overlayColor="text-red-500"
-            fontSize="text-5xl md:text-7xl lg:text-[100px]"
+            fontSize="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-[100px]"
             letterDelay={0.08}
             overlayDelay={0.05}
             overlayDuration={0.4}
