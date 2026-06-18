@@ -92,7 +92,7 @@ const Project = () => {
             >
               <CardContainer containerClassName="py-0 px-2 sm:px-4">
                 <CardBody
-                  className="project-card relative group/card w-[82vw] sm:w-[28rem] h-[450px] rounded-[30px] p-6 flex flex-col justify-between text-left overflow-visible shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+                  className="project-card relative group/card w-[82vw] sm:w-[28rem] h-[390px] rounded-[30px] p-6 flex flex-col justify-between text-left overflow-visible shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
                   style={{
                     '--project-gradient': project.gradient,
                   }}
@@ -101,7 +101,7 @@ const Project = () => {
                     {/* Title */}
                     <CardItem
                       translateZ="50"
-                      className="text-2xl font-bold text-white tracking-tight"
+                      className="text-2xl font-bold text-white tracking-tight text-center w-full"
                     >
                       {project.title}
                     </CardItem>
@@ -109,7 +109,7 @@ const Project = () => {
                     {/* Tech Tags */}
                     <CardItem
                       translateZ="40"
-                      className="flex flex-wrap gap-1.5 mt-2"
+                      className="flex flex-wrap justify-center gap-1.5 mt-2 w-full"
                     >
                       {project.tags.map((tag, idx) => (
                         <span
