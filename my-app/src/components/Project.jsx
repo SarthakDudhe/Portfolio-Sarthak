@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { ChevronLeft, ChevronRight, ExternalLink, Github } from "lucide-react";
 import { motion } from "framer-motion";
+import { CardBody, CardContainer, CardItem } from "./ui/3d-card";
 import cbs from "../assets/CBSJAVA.png";
 import prepgenie from "../assets/Prepgenie.png";
 import chat from "../assets/Quickchat.png";
@@ -87,43 +88,59 @@ const Project = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="project-card-container relative snap-center flex-shrink-0 py-8 px-4 group overflow-visible isolate"
+              className="snap-center flex-shrink-0 overflow-visible py-4"
             >
-              {/* LAYER 1 — MULTICOLOR GLOW (behind card) */}
-              <div
-                className="project-glow"
-                style={{
-                  background: project.gradient,
-                }}
-              />
-
-              {/* LAYER 2 — GRADIENT BORDER & LAYER 3 — CARD SURFACE */}
-              <div
-                className="project-card"
-                style={{
-                  '--project-gradient': project.gradient,
-                }}
-              >
-                {/* Top Section: Image */}
-                <div className="project-card-image-wrapper w-full h-[58%] overflow-hidden relative">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
+              <CardContainer containerClassName="py-0 px-2 sm:px-4">
+                <CardBody
+                  className="project-card relative group/card border-white/10 w-[82vw] sm:w-[28rem] md:w-[30rem] h-auto rounded-[30px] p-6 border shadow-[0_10px_35px_rgba(0,0,0,0.6)] flex flex-col justify-between text-left overflow-visible"
+                  style={{
+                    '--project-gradient': project.gradient,
+                  }}
+                >
+                  {/* LAYER 1 — MULTICOLOR GLOW (behind card content, tilting in 3D) */}
+                  <div
+                    className="project-glow opacity-30 group-hover/card:opacity-60 transition-opacity duration-300 absolute inset-0 scale-[1.05] blur-[40px] pointer-events-none rounded-[30px]"
+                    style={{
+                      background: project.gradient,
+                      zIndex: -1,
+                    }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
-                </div>
 
-                {/* Bottom Section: Content */}
-                <div className="project-card-content w-full h-[42%] p-5 sm:p-6 md:p-7 flex flex-col justify-between text-left">
                   <div>
-                    <h3 className="text-white font-semibold text-lg md:text-xl mb-2 tracking-tight transition-colors">
+                    {/* Top Section: Title & Description */}
+                    <CardItem
+                      translateZ="50"
+                      className="text-white font-bold text-lg md:text-xl mb-1 tracking-tight"
+                    >
                       {project.title}
-                    </h3>
-                    <p className="text-white/70 text-xs md:text-sm leading-relaxed mb-3 line-clamp-3 font-normal">
+                    </CardItem>
+                    <CardItem
+                      as="p"
+                      translateZ="60"
+                      className="text-white/70 text-xs md:text-sm leading-relaxed mb-4 font-normal"
+                    >
                       {project.description}
-                    </p>
-                    <div className="flex flex-wrap gap-1.5 mb-3">
+                    </CardItem>
+
+                    {/* Middle Section: Image */}
+                    <CardItem
+                      translateZ="100"
+                      rotateX={10}
+                      rotateZ={-2}
+                      className="w-full mb-5 overflow-hidden rounded-2xl border border-white/10"
+                    >
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-48 sm:h-52 md:h-56 object-cover group-hover/card:scale-[1.05] transition-transform duration-500"
+                      />
+                    </CardItem>
+
+                    {/* Tech Tags */}
+                    <CardItem
+                      translateZ="40"
+                      className="flex flex-wrap gap-1.5 mb-6"
+                    >
                       {project.tags.map((tag, idx) => (
                         <span
                           key={idx}
@@ -132,32 +149,39 @@ const Project = () => {
                           {tag}
                         </span>
                       ))}
-                    </div>
+                    </CardItem>
                   </div>
 
-                  {/* Buttons Section */}
-                  <div className="flex gap-3 w-full mt-auto">
-                    <a
-                      href={project.liveLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-center gap-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-full text-xs md:text-sm font-medium transition-all hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:scale-[1.02] cursor-pointer"
-                    >
-                      <ExternalLink size={14} className="md:size-4" />
-                      <span>Live Demo</span>
-                    </a>
-                    <a
+                  {/* Bottom Section: Buttons */}
+                  <div className="flex justify-between items-center mt-2 w-full">
+                    <CardItem
+                      translateZ={30}
+                      translateX={-15}
+                      as="a"
                       href={project.githubLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-center gap-1.5 px-4 py-2 bg-white/5 border border-white/10 hover:bg-white/10 text-white rounded-full text-xs md:text-sm font-medium transition-all hover:shadow-[0_0_15px_rgba(255,255,255,0.15)] hover:scale-[1.02] cursor-pointer backdrop-blur-sm"
+                      className="px-4 py-2 rounded-xl text-xs font-medium text-white flex items-center gap-1.5 border border-white/10 hover:bg-white/5 transition-colors cursor-pointer"
                     >
                       <Github size={14} className="md:size-4" />
                       <span>GitHub</span>
-                    </a>
+                    </CardItem>
+
+                    <CardItem
+                      translateZ={30}
+                      translateX={15}
+                      as="a"
+                      href={project.liveLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-2 rounded-xl bg-blue-600 text-white text-xs font-bold flex items-center gap-1.5 hover:bg-blue-500 transition-colors cursor-pointer shadow-[0_4px_20px_rgba(59,130,246,0.3)]"
+                    >
+                      <ExternalLink size={14} className="md:size-4" />
+                      <span>Live Demo</span>
+                    </CardItem>
                   </div>
-                </div>
-              </div>
+                </CardBody>
+              </CardContainer>
             </motion.div>
           ))}
         </div>

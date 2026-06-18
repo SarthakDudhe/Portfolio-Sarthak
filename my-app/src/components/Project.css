@@ -37,48 +37,20 @@
   display: none; /* Chrome/Safari */
 }
 
-/* Row card styling refactored to Vertical Premium Glow Card */
+/* Row card styling refactored to Vertical Premium 3D Card */
 .project-card-container {
-  width: 85vw;
-  max-width: 440px;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: visible;
 }
 
-@media (min-width: 640px) {
-  .project-card-container {
-    width: 380px;
-  }
-}
-
-@media (min-width: 768px) {
-  .project-card-container {
-    width: 420px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .project-card-container {
-    width: 440px;
-  }
-}
-
-/* Layer 1: Multicolor Glow */
+/* Layer 1: Multicolor Glow (Nested inside 3D Card Body) */
 .project-glow {
   position: absolute;
-  inset: 0;
-  transform: scale(1.08);
-  opacity: 0.65;
-  filter: blur(60px);
+  inset: -10px;
   pointer-events: none;
-  border-radius: 40px;
-  z-index: 0;
-  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* Increase glow opacity on card hover */
-.project-card-container:hover .project-glow {
-  opacity: 0.85;
-  transform: scale(1.10);
+  border-radius: 30px;
+  filter: blur(40px);
+  z-index: -1;
+  transition: opacity 0.4s ease;
 }
 
 /* Layer 2: Gradient Border & Layer 3: Card Surface */
@@ -86,37 +58,24 @@
   position: relative;
   z-index: 10;
   width: 100%;
-  height: 560px;
-  border: 8px solid transparent;
-  border-radius: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
   background: 
     linear-gradient(#0B0B0D, #0B0B0D) padding-box,
     var(--project-gradient) border-box;
+  border-width: 3px;
   color: white;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow: visible; /* CRITICAL for 3D card pop-outs */
   cursor: default;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6);
 }
 
-@media (min-width: 640px) {
-  .project-card {
-    height: 600px;
-  }
-}
-
-@media (min-width: 768px) {
-  .project-card {
-    height: 620px;
-  }
-}
-
-/* Card hover animation */
-.project-card-container:hover .project-card {
-  transform: translateY(-8px) scale(1.02);
-  filter: brightness(1.15);
+/* Card hover glow boost */
+.project-card:hover {
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.8);
 }
 
 /* Scroll adjustments */
