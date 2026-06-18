@@ -91,12 +91,17 @@ const Project = () => {
               className="snap-center flex-shrink-0 overflow-visible py-4"
             >
               <CardContainer containerClassName="py-0 px-2 sm:px-4">
-                <CardBody className="bg-[#0b0b0f]/80 backdrop-blur-md relative group/card dark:hover:shadow-2xl dark:hover:shadow-white/[0.05] dark:border-white/[0.15] border-black/[0.1] w-[82vw] sm:w-[30rem] h-auto rounded-3xl p-6 border flex flex-col justify-between text-left overflow-visible shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+                <CardBody
+                  className="project-card relative group/card w-[82vw] sm:w-[28rem] h-[430px] rounded-[30px] p-6 flex flex-col justify-between text-left overflow-visible shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+                  style={{
+                    '--project-gradient': project.gradient,
+                  }}
+                >
                   <div>
                     {/* Title */}
                     <CardItem
                       translateZ="50"
-                      className="text-2xl font-extrabold text-neutral-600 dark:text-white tracking-tight"
+                      className="text-2xl font-bold text-white tracking-tight"
                     >
                       {project.title}
                     </CardItem>
@@ -104,12 +109,12 @@ const Project = () => {
                     {/* Tech Tags */}
                     <CardItem
                       translateZ="40"
-                      className="flex flex-wrap gap-1.5 mt-3"
+                      className="flex flex-wrap gap-1.5 mt-2"
                     >
                       {project.tags.map((tag, idx) => (
                         <span
                           key={idx}
-                          className="px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 text-white/50 text-[10px] font-medium tracking-wide uppercase"
+                          className="px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 text-white/50 text-[10px] font-semibold tracking-wide uppercase"
                         >
                           {tag}
                         </span>
@@ -119,47 +124,42 @@ const Project = () => {
                     {/* Image */}
                     <CardItem
                       translateZ="100"
-                      rotateX={15}
-                      rotateZ={-8}
-                      className="w-full mt-6 overflow-hidden rounded-2xl border border-white/10 shadow-2xl"
+                      rotateX={12}
+                      rotateZ={-5}
+                      className="w-full mt-4 overflow-hidden rounded-2xl border border-white/10 shadow-2xl"
                     >
                       <img
                         src={project.image}
-                        height="1000"
-                        width="1000"
-                        className="h-60 w-full object-cover rounded-xl group-hover/card:scale-[1.03] transition-transform duration-500"
+                        className="h-44 w-full object-cover rounded-xl group-hover/card:scale-[1.03] transition-transform duration-500"
                         alt={project.title}
                       />
                     </CardItem>
                   </div>
 
                   {/* Buttons */}
-                  <div className="flex justify-between items-center mt-12">
-                    <CardItem
-                      translateZ={20}
-                      translateX={-30}
-                      as="a"
+                  <CardItem
+                    translateZ={30}
+                    className="flex justify-between items-center w-full mt-6"
+                  >
+                    <a
                       href={project.githubLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-4 py-2.5 rounded-xl text-xs font-semibold text-neutral-400 dark:text-neutral-300 border border-white/10 hover:border-white/30 hover:bg-white/5 hover:text-white transition-all flex items-center gap-2 cursor-pointer"
+                      className="px-4 py-2.5 rounded-xl text-xs font-semibold text-neutral-400 dark:text-neutral-300 border border-white/10 hover:border-white/30 hover:bg-white/5 hover:text-white transition-all flex items-center justify-center gap-2 cursor-pointer w-[48%] text-center hover:scale-[1.02] active:scale-[0.98] transition-transform duration-200"
                     >
                       <Github size={14} />
                       <span>GitHub</span>
-                    </CardItem>
-                    <CardItem
-                      translateZ={20}
-                      translateX={30}
-                      as="a"
+                    </a>
+                    <a
                       href={project.liveLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-5 py-2.5 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold hover:bg-neutral-200 transition-all flex items-center gap-2 cursor-pointer shadow-[0_4px_20px_rgba(255,255,255,0.15)] hover:shadow-[0_4px_25px_rgba(255,255,255,0.35)]"
+                      className="px-4 py-2.5 rounded-xl bg-white text-black text-xs font-bold hover:bg-neutral-200 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-[0_4px_15px_rgba(255,255,255,0.15)] hover:shadow-[0_4px_25px_rgba(255,255,255,0.35)] w-[48%] text-center hover:scale-[1.02] active:scale-[0.98] transition-transform duration-200"
                     >
                       <ExternalLink size={14} />
                       <span>Live Demo</span>
-                    </CardItem>
-                  </div>
+                    </a>
+                  </CardItem>
                 </CardBody>
               </CardContainer>
             </motion.div>
