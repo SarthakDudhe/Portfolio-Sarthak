@@ -33,25 +33,22 @@ function Hero()
       />
       
       <div className="hero-container">
-        <div className="hero-left z-10">
+        <div className="hero-title-wrapper z-10">
           <RevealText 
             text="SARTHAK"
             textColor="text-white"
             overlayColor="text-red-500"
-            fontSize="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-[100px]"
+            fontSize="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[140px] 2xl:text-[160px]"
             letterDelay={0.08}
             overlayDelay={0.05}
             overlayDuration={0.4}
             springDuration={600}
           />
-        </div>
-
-        <div className="hero-right z-10">
           <RevealText 
             text="DUDHE"
             textColor="text-white"
             overlayColor="text-red-500"
-            fontSize="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-[100px]"
+            fontSize="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[140px] 2xl:text-[160px]"
             letterDelay={0.08}
             overlayDelay={0.05}
             overlayDuration={0.4}

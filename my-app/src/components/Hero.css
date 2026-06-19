@@ -1,6 +1,6 @@
 .hero-container{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     font-weight: 900;
     width: 100%;
     height: 100vh;
@@ -9,11 +9,19 @@
     padding-top: 80px;
     padding-left: 5vw;
     padding-right: 5vw;
-    flex-wrap: nowrap;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     box-sizing: border-box;
     overflow: hidden;
+}
+
+.hero-title-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0px;
+    text-align: center;
 }
 
 .hero-left{
@@ -168,12 +176,14 @@
 /* Responsive styling for mobile view */
 @media (max-width: 768px) {
     .hero-container {
-        flex-direction: column; /* Stack items vertically */
-        height: auto; /* Adjust height for content */
-        padding-top: 50px; /* Reduce padding */
+        flex-direction: column;
+        height: 100vh;
+        min-height: 100vh;
+        padding-top: 80px;
         padding-left: 20px;
         padding-right: 20px;
-        flex-wrap: wrap !important;
+        align-items: center;
+        justify-content: center;
     }
 
     .hero-left {
