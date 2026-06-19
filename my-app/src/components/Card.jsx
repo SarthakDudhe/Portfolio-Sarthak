@@ -16,7 +16,10 @@ import React from 'react';
 const Card = () => {
   return (
    <div className="tech-stack" id="skills">
-        <h2>My Tech Stack</h2>
+        <div className="tech-header">
+          <h2>My Tech Stack</h2>
+          <p className="tech-subtitle">Technologies and tools I use to bring designs and products to life</p>
+        </div>
         <div className="skills-container">
           <div className="skill-card">
             <Code2 size={48} />
