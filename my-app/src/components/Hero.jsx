@@ -7,7 +7,6 @@ import 'animate.css';
 import backgroundVideo from "../assets/background.mp4";
 
 // Import integrated UI components
-import { SplineScene } from "./ui/splite";
 import { Card } from "./ui/card";
 import { Spotlight } from "./ui/spotlight";
 import { RevealText } from "./ui/reveal-text";
@@ -44,13 +43,6 @@ function Hero()
             overlayDelay={0.05}
             overlayDuration={0.4}
             springDuration={600}
-          />
-        </div>
-        
-        <div className="hero-center relative z-10">
-          <SplineScene 
-            scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-            className="w-full h-full spline-scene-3d"
           />
         </div>
 
