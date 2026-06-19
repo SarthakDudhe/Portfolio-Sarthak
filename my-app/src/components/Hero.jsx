@@ -1,22 +1,51 @@
 import "./Hero.css"
-import React from 'react';
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import Contact from "./Contact";
-import 'animate.css';
+import React, { useState, useEffect } from 'react';
+import { motion } from "framer-motion";
 import backgroundVideo from "../assets/background.mp4";
-
-// Import integrated UI components
-import { Card } from "./ui/card";
 import { Spotlight } from "./ui/spotlight";
-import { RevealText } from "./ui/reveal-text";
 
-function Hero()
-{
+function Hero() {
+  const words = ["SARTHAK DUDHE", "FULLSTACK DEVELOPER"];
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const [displayedText, setDisplayedText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [typingSpeed, setTypingSpeed] = useState(120);
+
+  useEffect(() => {
+    let timer;
+    const currentWord = words[currentWordIndex];
+
+    if (!isDeleting) {
+      timer = setTimeout(() => {
+        setDisplayedText(currentWord.slice(0, displayedText.length + 1));
+        setTypingSpeed(100 + Math.random() * 40); // Natural variance
+      }, typingSpeed);
+
+      if (displayedText === currentWord) {
+        timer = setTimeout(() => {
+          setIsDeleting(true);
+          setTypingSpeed(40); // Deleting is faster
+        }, 2500); // Pause on full word
+      }
+    } else {
+      timer = setTimeout(() => {
+        setDisplayedText(currentWord.slice(0, displayedText.length - 1));
+      }, typingSpeed);
+
+      if (displayedText === "") {
+        setIsDeleting(false);
+        setCurrentWordIndex((prevIndex) => (prevIndex + 1) % words.length);
+        setTypingSpeed(150); // Pause before next word starts typing
+      }
+    }
+
+    return () => clearTimeout(timer);
+  }, [displayedText, isDeleting, currentWordIndex]);
+
   return (
     <div className="front-page relative overflow-hidden" id="home">
       {/* Background Video */}
-      <div className="absolute inset-0 z-0 opacity-40 pointer-events-none">
+      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
         <video
           src={backgroundVideo}
           autoPlay
@@ -33,31 +62,20 @@ function Hero()
       />
       
       <div className="hero-container">
-        <div className="hero-title-wrapper z-10">
-          <RevealText 
-            text="SARTHAK"
-            textColor="text-white"
-            overlayColor="text-red-500"
-            fontSize="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[140px] 2xl:text-[160px]"
-            letterDelay={0.08}
-            overlayDelay={0.05}
-            overlayDuration={0.4}
-            springDuration={600}
-          />
-          <RevealText 
-            text="DUDHE"
-            textColor="text-white"
-            overlayColor="text-red-500"
-            fontSize="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[140px] 2xl:text-[160px]"
-            letterDelay={0.08}
-            overlayDelay={0.05}
-            overlayDuration={0.4}
-            springDuration={600}
-          />
-        </div>
+        <motion.div 
+          className="hero-title-wrapper z-10"
+          initial={{ opacity: 0, y: 30, scale: 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <h1 className="hero-typing-title">
+            {displayedText}
+            <span className="typing-cursor">|</span>
+          </h1>
+        </motion.div>
       </div>
     </div>
   );
 }
 
-export default Hero
+export default Hero;
