@@ -1,153 +1,182 @@
-/* Tech Stack Section Styles */
-.tech-stack {
-  background-color: #0A0A0B !important;
-  min-height: 100vh;
-  padding: 100px 5vw;
+.tech-stack-section {
+  padding: 120px 5vw;
+  background-color: #0A0A0B;
   color: #ffffff;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.tech-container {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 80px;
+  max-width: 1100px;
+  width: 100%;
+  align-items: start;
+}
+
+/* Left Column: Heading and Intro */
+.tech-left {
+  position: sticky;
+  top: 120px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 100%;
+  align-items: flex-start;
+  text-align: left;
 }
 
-.tech-header {
-  text-align: center;
-  margin-bottom: 60px;
-}
-
-.tech-header h2 {
-  font-size: 2.8rem;
+.tech-main-title {
+  font-size: 2.5rem;
   font-weight: 700;
-  background: linear-gradient(90deg, #ffffff, #888888);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 10px;
-  letter-spacing: 1px;
-}
-
-.tech-subtitle {
-  font-size: 1.1rem;
-  color: #a0a0a0;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.skills-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 32px;
-  max-width: 1200px;
-  width: 100%;
-  padding: 0;
-}
-
-.skill-card {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 24px;
-  padding: 40px 30px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-              border-color 0.4s ease, 
-              box-shadow 0.4s ease;
-}
-
-.skill-card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(74, 158, 255, 0.25);
-  box-shadow: 0 20px 40px -15px rgba(74, 158, 255, 0.15), 
-              0 15px 35px rgba(0, 0, 0, 0.6),
-              inset 0 1px 1px rgba(255, 255, 255, 0.1);
-}
-
-.skill-card svg {
-  color: #4a9eff;
-  margin-bottom: 24px;
-  position: relative;
-  z-index: 1;
-  filter: drop-shadow(0 0 12px rgba(74, 158, 255, 0.35));
-  transition: transform 0.3s ease;
-}
-
-.skill-card:hover svg {
-  transform: scale(1.1);
-}
-
-.skill-card h3 {
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: 24px;
+  line-height: 1.2;
   color: #ffffff;
-  position: relative;
-  z-index: 1;
+  margin: 0 0 20px 0;
+  letter-spacing: -0.5px;
 }
 
-.skills {
+.tech-desc {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #8e8e93;
+  margin: 0;
+}
+
+/* Right Column: Clean Gridless List */
+.tech-right-list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+}
+
+.tech-category-row {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 30px;
+  width: 100%;
+}
+
+.tech-category-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.cat-icon {
+  color: #4a9eff;
+  filter: drop-shadow(0 0 8px rgba(74, 158, 255, 0.25));
+}
+
+.category-header h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.2px;
+}
+
+.skills-inline-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  position: relative;
-  z-index: 1;
+  gap: 16px 28px;
 }
 
-.skills span {
-  background: rgba(255, 255, 255, 0.03);
-  padding: 8px 16px;
-  border-radius: 14px;
-  font-size: 14px;
-  color: #d1d1d6;
-  letter-spacing: 0.3px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  display: inline-flex;
+.skill-item {
+  display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   cursor: default;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.skills span:hover {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(74, 158, 255, 0.4);
-  box-shadow: 0 0 15px rgba(74, 158, 255, 0.2);
-}
-
-/* Premium Grayscale-to-Color logo effect */
-.tech-logo {
-  width: 18px;
-  height: 18px;
+.skill-logo {
+  width: 20px;
+  height: 20px;
   object-fit: contain;
-  filter: grayscale(100%) opacity(0.65);
-  transition: all 0.3s ease;
+  filter: grayscale(100%) opacity(0.5);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.skills span:hover .tech-logo {
+.skill-logo-placeholder {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 10px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Hover States */
+.skill-item:hover {
+  transform: translateY(-1px);
+}
+
+.skill-item:hover .skill-name {
+  color: #ffffff;
+}
+
+.skill-item:hover .skill-logo {
   filter: grayscale(0%) opacity(1);
-  transform: scale(1.2) rotate(4deg);
+  transform: scale(1.15);
 }
 
-/* Media Queries */
-@media screen and (max-width: 768px) {
-  .tech-stack {
-    padding: 80px 20px;
+.skill-item:hover .skill-logo-placeholder {
+  background: rgba(74, 158, 255, 0.15);
+  color: #4a9eff;
+  transform: scale(1.15);
+}
+
+.skill-name {
+  font-size: 0.95rem;
+  color: #a0a0a5;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+/* ----------------------
+   Responsive Design
+------------------------ */
+@media (max-width: 968px) {
+  .tech-container {
+    grid-template-columns: 1fr;
+    gap: 50px;
   }
 
-  .tech-header h2 {
+  .tech-left {
+    position: static;
+    align-items: center;
+    text-align: center;
+  }
+
+  .tech-main-title {
     font-size: 2.2rem;
   }
 
-  .skills-container {
-    grid-template-columns: 1fr;
-    gap: 20px;
+  .tech-desc {
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 576px) {
+  .tech-stack-section {
+    padding: 80px 20px;
   }
 
-  .skill-card {
-    padding: 30px 20px;
+  .skills-inline-list {
+    gap: 14px 20px;
   }
 }

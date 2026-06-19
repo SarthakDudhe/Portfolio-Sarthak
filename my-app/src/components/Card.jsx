@@ -1,7 +1,6 @@
 import "./Card.css"
 import { Code2, Database, Globe, Server } from 'lucide-react';
 import { motion } from "framer-motion";
-
 import html from "../assets/htmllogo.png"
 import css from "../assets/csslogo.png"
 import js from "../assets/javascriptlogo.png"
@@ -11,7 +10,6 @@ import mysql from "../assets/mysqllogo.png"
 import node from "../assets/nodelogo.png"
 import python from "../assets/pythonlogo.png"
 import react from "../assets/react.svg"
-
 import React from 'react';
 
 const containerVariants = {
@@ -19,18 +17,17 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.12,
+      staggerChildren: 0.1,
       delayChildren: 0.1
     }
   }
 };
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 25, scale: 0.97 },
+const categoryVariants = {
+  hidden: { opacity: 0, y: 15 },
   visible: { 
     opacity: 1, 
-    y: 0, 
-    scale: 1,
+    y: 0,
     transition: {
       duration: 0.8,
       ease: [0.16, 1, 0.3, 1]
@@ -39,108 +36,104 @@ const itemVariants = {
 };
 
 const Card = () => {
+  const categories = [
+    {
+      title: "Frontend Development",
+      icon: <Code2 size={20} className="cat-icon" />,
+      skills: [
+        { name: "HTML", logo: html },
+        { name: "CSS", logo: css },
+        { name: "JavaScript", logo: js },
+        { name: "React.js", logo: react },
+      ]
+    },
+    {
+      title: "Backend Development",
+      icon: <Server size={20} className="cat-icon" />,
+      skills: [
+        { name: "Node.js", logo: node },
+        { name: "Express.js", logo: null },
+        { name: "Python", logo: python },
+        { name: "Java", logo: java },
+      ]
+    },
+    {
+      title: "Databases & Integration",
+      icon: <Database size={20} className="cat-icon" />,
+      skills: [
+        { name: "MongoDB", logo: mongo },
+        { name: "MySQL", logo: mysql },
+        { name: "Firebase", logo: null },
+      ]
+    },
+    {
+      title: "Tools & Protocols",
+      icon: <Globe size={20} className="cat-icon" />,
+      skills: [
+        { name: "Git", logo: null },
+        { name: "GitHub", logo: null },
+        { name: "REST APIs", logo: null },
+        { name: "Socket.IO", logo: null },
+      ]
+    }
+  ];
+
   return (
-   <div className="tech-stack" id="skills">
+    <section className="tech-stack-section" id="skills">
+      <div className="tech-container">
+        
+        {/* Left Column: Title & Intro */}
         <motion.div 
-          className="tech-header"
-          initial={{ opacity: 0, y: 20, scale: 0.98 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          className="tech-left"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h2>My Tech Stack</h2>
-          <p className="tech-subtitle">Technologies and tools I use to bring designs and products to life</p>
+          <span className="section-label">Skills & Tech</span>
+          <h2 className="tech-main-title">My Tech Stack</h2>
+          <p className="tech-desc">
+            A selective collection of languages, frameworks, and development tools I use to build robust, scalable products.
+          </p>
         </motion.div>
         
+        {/* Right Column: Typographic Row List */}
         <motion.div 
-          className="skills-container"
+          className="tech-right-list"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.15 }}
         >
-          <motion.div 
-            className="skill-card"
-            variants={itemVariants}
-          >
-            <Code2 size={48} />
-            <h3>Frontend Development</h3>
-            <div className="skills">
-              <span>
-                <img src={html} alt="HTML" className="tech-logo" />
-                HTML
-              </span>
-              <span>
-                <img src={css} alt="CSS" className="tech-logo" />
-                CSS
-              </span>
-              <span>
-                <img src={js} alt="JavaScript" className="tech-logo" />
-                JavaScript
-              </span>
-              <span>
-                <img src={react} alt="React" className="tech-logo" />
-                React
-              </span>
-            </div>
-          </motion.div>
-  
-          <motion.div 
-            className="skill-card"
-            variants={itemVariants}
-          >
-            <Server size={48} />
-            <h3>Backend Development</h3>
-            <div className="skills">
-              <span>
-                <img src={node} alt="Node.js" className="tech-logo" />
-                Node.js
-              </span>
-              <span>Express</span>
-              <span>
-                <img src={python} alt="Python" className="tech-logo" />
-                Python
-              </span>
-              <span>
-                <img src={java} alt="Java" className="tech-logo" />
-                Java
-              </span>
-            </div>
-          </motion.div>
-  
-          <motion.div 
-            className="skill-card"
-            variants={itemVariants}
-          >
-            <Database size={48} />
-            <h3>Databases</h3>
-            <div className="skills">
-              <span>
-                <img src={mongo} alt="MongoDB" className="tech-logo" />
-                MongoDB
-              </span>
-              <span>
-                <img src={mysql} alt="MySQL" className="tech-logo" />
-                MySQL
-              </span>
-              <span>Firebase</span>
-            </div>
-          </motion.div>
-  
-          <motion.div 
-            className="skill-card"
-            variants={itemVariants}
-          >
-            <Globe size={48} />
-            <h3> Tools</h3>
-            <div className="skills">
-              <span>Git</span>
-            </div>
-          </motion.div>
+          {categories.map((cat, idx) => (
+            <motion.div 
+              key={idx} 
+              className="tech-category-row"
+              variants={categoryVariants}
+            >
+              <div className="category-header">
+                {cat.icon}
+                <h3>{cat.title}</h3>
+              </div>
+              <div className="skills-inline-list">
+                {cat.skills.map((skill, sIdx) => (
+                  <div key={sIdx} className="skill-item">
+                    {skill.logo ? (
+                      <img src={skill.logo} alt={skill.name} className="skill-logo" />
+                    ) : (
+                      <div className="skill-logo-placeholder">{skill.name.charAt(0)}</div>
+                    )}
+                    <span className="skill-name">{skill.name}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          ))}
         </motion.div>
+
       </div>
-  )
-}
+    </section>
+  );
+};
 
 export default Card;
-

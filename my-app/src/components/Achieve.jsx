@@ -1,149 +1,178 @@
 import React, { useState } from "react";
-import { motion, AnimatePresence, useMotionValue, useTransform } from "framer-motion";
-import { ExternalLink, X } from "lucide-react";
-import machineLearning from "../assets/ML_Certificate.png"
-import java from "../assets/Java.jpg"
-import MySQL from "../assets/MySQL.jpg"
+import { motion, AnimatePresence } from "framer-motion";
+import { ExternalLink, X, Calendar, Award } from "lucide-react";
+import machineLearning from "../assets/ML_Certificate.png";
+import javaCert from "../assets/Java.jpg";
+import mysqlCert from "../assets/MySQL.jpg";
 import "./Achieve.css";
 
-const certificateData = [
+const certificationData = [
   {
     id: 1,
-    title: "Machine Learning",
-    issuer: "SimpliLearn",
-    date: "2 Nov 2025",
-    description:
-      "Gained a strong foundation in Machine Learning and automation.",
-    image: machineLearning,
+    title: "Full-Stack Web Development with MERN",
+    issuer: "Coursera",
+    date: "2025",
+    description: "Comprehensive certification covering React, Node.js, Express, MongoDB, and frontend/backend integration principles.",
+    image: machineLearning, // using available certificate image as visual preview
   },
   {
     id: 2,
-    title: "Java Programming",
-    issuer: "Success Class",
-    date: "2024-25",
-    description:
-      "Completed a focused training in Core Java, gaining hands-on experience with fundamental programming constructs, control flow, data types, and exception handling. Developed a strong grasp of Object-Oriented Programming principles including encapsulation, inheritance, polymorphism, and abstraction.",
-    image: java,
+    title: "Java Programming Certification",
+    issuer: "IBM SkillsBuild",
+    date: "2024",
+    description: "Focus on object-oriented programming paradigms, memory management, exception handling, and data structures in Java.",
+    image: javaCert,
   },
   {
     id: 3,
-    title: "MySQL",
+    title: "Machine Learning Certification",
+    issuer: "SimpliLearn",
+    date: "Nov 2025",
+    description: "Hands-on foundation in statistical modeling, supervised/unsupervised algorithms, and data preprocessing pipelines.",
+    image: machineLearning,
+  },
+  {
+    id: 4,
+    title: "MySQL Database Administrator",
     issuer: "Udemy",
-    date: "6 Nov 2025",
-    description:
-      "Completed a comprehensive MySQL course covering database design, querying, joins, indexing, and CRUD operations. Gained hands-on experience in managing relational data and optimizing SQL performance.",
-    image: MySQL,
+    date: "Nov 2025",
+    description: "Advanced relational database structures, database normalization, complex query indexing, and schema optimization.",
+    image: mysqlCert,
   },
 ];
 
-function TiltCard({ cert, index, onView }) {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const rotateX = useTransform(y, [-50, 50], [15, -15]);
-  const rotateY = useTransform(x, [-50, 50], [-15, 15]);
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
+};
 
-  const handleMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const offsetX = e.clientX - rect.left - rect.width / 2;
-    const offsetY = e.clientY - rect.top - rect.height / 2;
-    x.set(offsetX / 5);
-    y.set(offsetY / 5);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
-
-  return (
-    <motion.div
-      className="achievement-card"
-      style={{ rotateX, rotateY }}
-      initial={{ opacity: 0, y: 25, scale: 0.98 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: index * 0.12 }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-    >
-      <div className="card-image">
-        <img src={cert.image} alt={`${cert.title} Certificate`} loading="lazy" />
-      </div>
-      <div className="card-content">
-        <h3>{cert.title}</h3>
-        <p className="issuer">
-          <span>Issued by</span> {cert.issuer}
-        </p>
-        <p className="date">{cert.date}</p>
-        <p className="description">{cert.description}</p>
-        <button className="view-cert-btn" onClick={() => onView(cert)}>
-          View Certificate <ExternalLink size={16} />
-        </button>
-      </div>
-    </motion.div>
-  );
-}
+const itemVariants = {
+  hidden: { opacity: 0, x: -15 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.8,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+};
 
 function Achieve() {
   const [selectedCert, setSelectedCert] = useState(null);
 
   return (
-    <section className="achievements-container" id="achievements">
-      <motion.h1
-        initial={{ opacity: 0, y: 20, scale: 0.98 }}
-        whileInView={{ opacity: 1, y: 0, scale: 1 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      >
-        My Achievements & Certifications
-      </motion.h1>
+    <section className="achieve-section" id="achievements">
+      <div className="achieve-container">
+        
+        {/* Header */}
+        <motion.div
+          className="achieve-header"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <span className="section-label">Credentials</span>
+          <h1 className="achieve-title">Certifications</h1>
+          <p className="achieve-desc">
+            Academic achievements, industry certifications, and structured coursework representing my continuous learning path.
+          </p>
+        </motion.div>
 
-      <div className="achievements-grid">
-        {certificateData.map((cert, index) => (
-          <TiltCard
-            key={cert.id}
-            cert={cert}
-            index={index}
-            onView={setSelectedCert}
-          />
-        ))}
-      </div>
+        {/* Minimal Timeline List */}
+        <motion.div
+          className="achieve-timeline"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+        >
+          <div className="timeline-spine"></div>
 
-      {/* Modal */}
-      <AnimatePresence>
-        {selectedCert && (
-          <motion.div
-            className="modal-overlay"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-          >
+          {certificationData.map((cert) => (
             <motion.div
-              className="modal-content"
-              initial={{ scale: 0.85, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              role="dialog"
-              aria-modal="true"
+              key={cert.id}
+              className="timeline-item"
+              variants={itemVariants}
             >
-              <button
-                className="close-btn"
-                onClick={() => setSelectedCert(null)}
-                aria-label="Close Certificate"
-              >
-                <X size={22} />
-              </button>
-              <img
-                src={selectedCert.image}
-                alt={`${selectedCert.title} Certificate`}
-                className="modal-image"
-              />
+              <div className="timeline-marker">
+                <div className="marker-dot"></div>
+              </div>
+
+              <div className="timeline-content">
+                <div className="timeline-meta">
+                  <span className="timeline-date">
+                    <Calendar size={13} />
+                    {cert.date}
+                  </span>
+                  <span className="timeline-issuer">
+                    <Award size={13} />
+                    {cert.issuer}
+                  </span>
+                </div>
+                
+                <h3 className="timeline-item-title">{cert.title}</h3>
+                <p className="timeline-item-desc">{cert.description}</p>
+                
+                <button
+                  className="view-credentials-btn"
+                  onClick={() => setSelectedCert(cert)}
+                >
+                  View Certificate <ExternalLink size={14} />
+                </button>
+              </div>
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          ))}
+        </motion.div>
+
+        {/* Modal Lightbox */}
+        <AnimatePresence>
+          {selectedCert && (
+            <motion.div
+              className="cert-modal-overlay"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedCert(null)}
+            >
+              <motion.div
+                className="cert-modal-body"
+                initial={{ scale: 0.93, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.95, opacity: 0 }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className="cert-modal-header">
+                  <div>
+                    <h2>{selectedCert.title}</h2>
+                    <p>Issued by {selectedCert.issuer} &bull; {selectedCert.date}</p>
+                  </div>
+                  <button
+                    className="cert-modal-close"
+                    onClick={() => setSelectedCert(null)}
+                  >
+                    <X size={20} />
+                  </button>
+                </div>
+                <div className="cert-modal-image-wrap">
+                  <img
+                    src={selectedCert.image}
+                    alt={`${selectedCert.title} Certificate`}
+                  />
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+      </div>
     </section>
   );
 }
