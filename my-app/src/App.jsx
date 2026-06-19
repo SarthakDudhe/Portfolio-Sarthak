@@ -7,25 +7,24 @@ import Project from './components/Project'
 import Footer from './components/Footer'
 import Contact from './components/Contact'
 import Achieve from './components/Achieve'
-import {Route,Routes,BrowserRouter} from "react-router-dom"
+import { Route, Routes, BrowserRouter } from "react-router-dom"
 import './App.css'
 
-
 function App() {
-  
-
   return (
     <>
-
-    <BrowserRouter>
-    <Navbar/>    
-    <Footer/>
-   
-    </BrowserRouter>
-     
-    
-
-     
+      <BrowserRouter>
+        <Navbar />    
+        <main>
+          <Hero />
+          <About />
+          <Card />
+          <Achieve />
+          <Project />
+          <Contact />
+        </main>
+        <Footer />
+      </BrowserRouter>
     </>
   )
 }
