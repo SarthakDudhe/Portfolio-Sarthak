@@ -59,12 +59,18 @@ const Project = () => {
 
   return (
     <section className="projects-section" id="projects">
-      <div className="projects-header">
+      <motion.div 
+        className="projects-header"
+        initial={{ opacity: 0, y: 20, scale: 0.98 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      >
         <h1>Projects</h1>
         <p className="projects-subtitle">
           Explore some of my recent works showcasing diverse technologies and designs.
         </p>
-      </div>
+      </motion.div>
 
       <div className="carousel-wrapper relative w-full flex items-center mx-auto">
         {/* Left Arrow Button */}
@@ -84,10 +90,10 @@ const Project = () => {
           {projects.map((project) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 25, scale: 0.98 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="snap-center flex-shrink-0 overflow-visible py-4"
             >
               <CardContainer containerClassName="py-0 px-2 sm:px-4">

@@ -46,10 +46,10 @@ const handlesubmit=(event)=>{
 <section className="contact-section" id="contact">
         <motion.h2 
           className="contact-title"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 20, scale: 0.98 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           Get in Touch
         </motion.h2>
@@ -57,10 +57,10 @@ const handlesubmit=(event)=>{
         <div className="contact-container">
           <motion.div 
             className="contact-info"
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30, scale: 0.97 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
             <h3>Let's Connect</h3>
             <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.</p>
@@ -105,10 +105,10 @@ const handlesubmit=(event)=>{
           <motion.form 
             className="contact-form"  
             onSubmit={handlesubmit}
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30, scale: 0.97 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
           >
             <div className="form-group">
               <input

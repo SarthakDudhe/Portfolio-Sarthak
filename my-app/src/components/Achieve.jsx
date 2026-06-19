@@ -59,10 +59,10 @@ function TiltCard({ cert, index, onView }) {
     <motion.div
       className="achievement-card"
       style={{ rotateX, rotateY }}
-      initial={{ opacity: 0, y: 60 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.6, delay: index * 0.15 }}
+      initial={{ opacity: 0, y: 25, scale: 0.98 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: index * 0.12 }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
@@ -89,7 +89,14 @@ function Achieve() {
 
   return (
     <section className="achievements-container" id="achievements">
-      <h1>My Achievements & Certifications</h1>
+      <motion.h1
+        initial={{ opacity: 0, y: 20, scale: 0.98 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      >
+        My Achievements & Certifications
+      </motion.h1>
 
       <div className="achievements-grid">
         {certificateData.map((cert, index) => (

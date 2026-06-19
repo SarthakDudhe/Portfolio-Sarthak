@@ -14,27 +14,54 @@ import react from "../assets/react.svg"
 
 import React from 'react';
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.1
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 25, scale: 0.97 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    scale: 1,
+    transition: {
+      duration: 0.8,
+      ease: [0.16, 1, 0.3, 1]
+    }
+  }
+};
+
 const Card = () => {
   return (
    <div className="tech-stack" id="skills">
         <motion.div 
           className="tech-header"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 20, scale: 0.98 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           <h2>My Tech Stack</h2>
           <p className="tech-subtitle">Technologies and tools I use to bring designs and products to life</p>
         </motion.div>
         
-        <div className="skills-container">
+        <motion.div 
+          className="skills-container"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+        >
           <motion.div 
             className="skill-card"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.15 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            variants={itemVariants}
           >
             <Code2 size={48} />
             <h3>Frontend Development</h3>
@@ -60,10 +87,7 @@ const Card = () => {
   
           <motion.div 
             className="skill-card"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.15 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            variants={itemVariants}
           >
             <Server size={48} />
             <h3>Backend Development</h3>
@@ -86,10 +110,7 @@ const Card = () => {
   
           <motion.div 
             className="skill-card"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.15 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            variants={itemVariants}
           >
             <Database size={48} />
             <h3>Databases</h3>
@@ -108,10 +129,7 @@ const Card = () => {
   
           <motion.div 
             className="skill-card"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.15 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            variants={itemVariants}
           >
             <Globe size={48} />
             <h3> Tools</h3>
@@ -119,7 +137,7 @@ const Card = () => {
               <span>Git</span>
             </div>
           </motion.div>
-        </div>
+        </motion.div>
       </div>
   )
 }
