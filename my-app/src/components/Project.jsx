@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import cbs from "../assets/CBSJAVA.png";
 import prepgenie from "../assets/Prepgenie.png";
 import chat from "../assets/Quickchat.png";
+import spark from "../assets/Spark.png";
 import "./Project.css";
 
 const projects = [
@@ -13,7 +14,7 @@ const projects = [
     title: "Spark — AI Workspace",
     category: "Full-Stack AI Platform",
     description: "An AI-powered career workspace for resume management, automated resume-job matching, content generation for outreach, and automated PDF feedback reports.",
-    image: prepgenie, // using prepgenie dashboard asset as visual representation
+    image: spark,
     tags: ["React.js", "Node.js", "Express", "MongoDB", "Gemini AI"],
     liveLink: "https://spark-ai-beige.vercel.app/",
     githubLink: "https://github.com/SarthakDudhe/Spark--AI-Powered-Career-Workspace",
