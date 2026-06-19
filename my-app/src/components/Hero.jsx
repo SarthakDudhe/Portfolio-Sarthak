@@ -45,7 +45,7 @@ function Hero() {
   return (
     <div className="front-page relative overflow-hidden" id="home">
       {/* Background Video */}
-      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
+      <div className="absolute inset-0 z-0 opacity-45 pointer-events-none">
         <video
           src={backgroundVideo}
           autoPlay
