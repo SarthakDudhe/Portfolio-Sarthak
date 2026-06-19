@@ -4,19 +4,28 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Contact from "./Contact";
 import 'animate.css';
+import backgroundVideo from "../assets/background.mp4";
 
 // Import integrated UI components
 import { Card } from "./ui/card";
 import { Spotlight } from "./ui/spotlight";
 import { RevealText } from "./ui/reveal-text";
-import { InteractiveQuantumCore } from "./ui/InteractiveQuantumCore";
 
 function Hero()
 {
   return (
     <div className="front-page relative overflow-hidden" id="home">
-      {/* Interactive Background Canvas */}
-      <InteractiveQuantumCore />
+      {/* Background Video */}
+      <div className="absolute inset-0 z-0 opacity-40 pointer-events-none">
+        <video
+          src={backgroundVideo}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+        />
+      </div>
 
       <Spotlight
         className="-top-40 left-0 md:left-60 md:-top-20"
