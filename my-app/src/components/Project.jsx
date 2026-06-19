@@ -5,6 +5,7 @@ import cbs from "../assets/CBSJAVA.png";
 import prepgenie from "../assets/Prepgenie.png";
 import chat from "../assets/Quickchat.png";
 import spark from "../assets/Spark.png";
+import feasto from "../assets/Feasto.png";
 import "./Project.css";
 
 const projects = [
@@ -33,13 +34,13 @@ const projects = [
   {
     id: 3,
     num: "03",
-    title: "Feasto Platform",
+    title: "Smart Food Ordering Platform",
     category: "Food Ordering System",
     description: "A full-stack food delivery application with user authentication, secure payment gateway processing via Stripe, and clean checkout states.",
-    image: chat, // using chat dashboard visual as fallback
+    image: feasto,
     tags: ["React.js", "Node.js", "Express", "MongoDB", "Stripe API"],
-    liveLink: "https://github.com/SarthakDudhe/Feasto-Food-Delivery-Platform",
-    githubLink: "https://github.com/SarthakDudhe/Feasto-Food-Delivery-Platform",
+    liveLink: "https://feasto-delta.vercel.app/",
+    githubLink: "https://github.com/SarthakDudhe/Feasto-Food-Order-Platform",
   },
   {
     id: 4,
