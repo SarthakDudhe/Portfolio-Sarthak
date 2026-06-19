@@ -43,16 +43,42 @@ function Contact() {
         {/* Left Column: Typographic Details */}
         <motion.div 
           className="contact-left"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <span className="section-label">Connect</span>
-          <h1 className="contact-title-minimal">Start a Conversation</h1>
-          <p className="contact-sub">
+          <div className="mask-wrapper">
+            <motion.span 
+              className="section-label"
+              initial={{ y: "100%" }}
+              whileInView={{ y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            >
+              Connect
+            </motion.span>
+          </div>
+          <div className="mask-wrapper" style={{ marginBottom: "20px" }}>
+            <motion.h1 
+              className="contact-title-minimal"
+              initial={{ y: "100%" }}
+              whileInView={{ y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.05 }}
+            >
+              Start a Conversation
+            </motion.h1>
+          </div>
+          <motion.p 
+            className="contact-sub"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+          >
             Have a project in mind, want to discuss software engineering opportunities, or simply say hello? Reach out.
-          </p>
+          </motion.p>
 
           <div className="contact-details-minimal">
             <div className="contact-detail-row">

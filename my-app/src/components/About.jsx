@@ -53,17 +53,28 @@ export default function About() {
 
         {/* Right Column: Premium Minimalist Content */}
         <div className="about-right">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <h2 className="section-label">ABOUT ME</h2>
-            <h1 className="hero-headline">
+          <div className="mask-wrapper">
+            <motion.h2 
+              className="section-label"
+              initial={{ y: "100%" }}
+              whileInView={{ y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            >
+              ABOUT ME
+            </motion.h2>
+          </div>
+          <div className="mask-wrapper" style={{ marginBottom: "24px" }}>
+            <motion.h1 
+              className="hero-headline"
+              initial={{ y: "100%" }}
+              whileInView={{ y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.05 }}
+            >
               Crafting high-performance <span className="gradient-text">full-stack applications</span> with engineering precision.
-            </h1>
-          </motion.div>
+            </motion.h1>
+          </div>
 
           <motion.p 
             className="bio-body"

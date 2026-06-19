@@ -71,19 +71,39 @@ function Achieve() {
       <div className="achieve-container">
         
         {/* Header */}
-        <motion.div
-          className="achieve-header"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <span className="section-label">Credentials</span>
-          <h1 className="achieve-title">Certifications</h1>
-          <p className="achieve-desc">
+        <div className="achieve-header">
+          <div className="mask-wrapper">
+            <motion.span 
+              className="section-label"
+              initial={{ y: "100%" }}
+              whileInView={{ y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            >
+              Credentials
+            </motion.span>
+          </div>
+          <div className="mask-wrapper" style={{ marginBottom: "20px" }}>
+            <motion.h1 
+              className="achieve-title"
+              initial={{ y: "100%" }}
+              whileInView={{ y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.05 }}
+            >
+              Certifications
+            </motion.h1>
+          </div>
+          <motion.p 
+            className="achieve-desc"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+          >
             Academic achievements, industry certifications, and structured coursework representing my continuous learning path.
-          </p>
-        </motion.div>
+          </motion.p>
+        </div>
 
         {/* Minimal Timeline List */}
         <motion.div

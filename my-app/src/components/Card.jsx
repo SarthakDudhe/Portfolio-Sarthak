@@ -11,20 +11,21 @@ import node from "../assets/nodelogo.png"
 import python from "../assets/pythonlogo.png"
 import react from "../assets/react.svg"
 import React from 'react';
+import { InteractiveQuantumCore } from "./ui/InteractiveQuantumCore";
 
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.08,
       delayChildren: 0.1
     }
   }
 };
 
 const categoryVariants = {
-  hidden: { opacity: 0, y: 15 },
+  hidden: { opacity: 0, y: 25 },
   visible: { 
     opacity: 1, 
     y: 0,
@@ -39,63 +40,88 @@ const Card = () => {
   const categories = [
     {
       title: "Frontend Development",
-      icon: <Code2 size={20} className="cat-icon" />,
+      icon: <Code2 size={18} className="cat-icon" />,
       skills: [
-        { name: "HTML", logo: html },
-        { name: "CSS", logo: css },
-        { name: "JavaScript", logo: js },
-        { name: "React.js", logo: react },
+        { name: "HTML", logo: html, color: "#E34F26" },
+        { name: "CSS", logo: css, color: "#1572B6" },
+        { name: "JavaScript", logo: js, color: "#F7DF1E" },
+        { name: "React.js", logo: react, color: "#61DAFB" },
       ]
     },
     {
       title: "Backend Development",
-      icon: <Server size={20} className="cat-icon" />,
+      icon: <Server size={18} className="cat-icon" />,
       skills: [
-        { name: "Node.js", logo: node },
-        { name: "Express.js", logo: null },
-        { name: "Python", logo: python },
-        { name: "Java", logo: java },
+        { name: "Node.js", logo: node, color: "#339933" },
+        { name: "Express.js", logo: null, color: "#ffffff" },
+        { name: "Python", logo: python, color: "#3776AB" },
+        { name: "Java", logo: java, color: "#f89820" },
       ]
     },
     {
       title: "Databases & Integration",
-      icon: <Database size={20} className="cat-icon" />,
+      icon: <Database size={18} className="cat-icon" />,
       skills: [
-        { name: "MongoDB", logo: mongo },
-        { name: "MySQL", logo: mysql },
-        { name: "Firebase", logo: null },
+        { name: "MongoDB", logo: mongo, color: "#47A248" },
+        { name: "MySQL", logo: mysql, color: "#00758F" },
+        { name: "Firebase", logo: null, color: "#FFCA28" },
       ]
     },
     {
       title: "Tools & Protocols",
-      icon: <Globe size={20} className="cat-icon" />,
+      icon: <Globe size={18} className="cat-icon" />,
       skills: [
-        { name: "Git", logo: null },
-        { name: "GitHub", logo: null },
-        { name: "REST APIs", logo: null },
-        { name: "Socket.IO", logo: null },
+        { name: "Git", logo: null, color: "#F05032" },
+        { name: "GitHub", logo: null, color: "#ffffff" },
+        { name: "REST APIs", logo: null, color: "#4a9eff" },
+        { name: "Socket.IO", logo: null, color: "#00c0ff" },
       ]
     }
   ];
 
   return (
     <section className="tech-stack-section" id="skills">
+      {/* Background Interactive Nodes Canvas */}
+      <InteractiveQuantumCore />
+
       <div className="tech-container">
         
-        {/* Left Column: Title & Intro */}
-        <motion.div 
-          className="tech-left"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <span className="section-label">Skills & Tech</span>
-          <h2 className="tech-main-title">My Tech Stack</h2>
-          <p className="tech-desc">
+        {/* Left Column: Heading */}
+        <div className="tech-left">
+          <div className="mask-wrapper">
+            <motion.span 
+              className="section-label"
+              initial={{ y: "100%" }}
+              whileInView={{ y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            >
+              Capabilities
+            </motion.span>
+          </div>
+          
+          <div className="mask-wrapper">
+            <motion.h2 
+              className="tech-main-title"
+              initial={{ y: "100%" }}
+              whileInView={{ y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.05 }}
+            >
+              My Tech Stack
+            </motion.h2>
+          </div>
+          
+          <motion.p 
+            className="tech-desc"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+          >
             A selective collection of languages, frameworks, and development tools I use to build robust, scalable products.
-          </p>
-        </motion.div>
+          </motion.p>
+        </div>
         
         {/* Right Column: Typographic Row List */}
         <motion.div 
@@ -117,7 +143,11 @@ const Card = () => {
               </div>
               <div className="skills-inline-list">
                 {cat.skills.map((skill, sIdx) => (
-                  <div key={sIdx} className="skill-item">
+                  <div 
+                    key={sIdx} 
+                    className="skill-item"
+                    style={{ "--hover-color": skill.color }}
+                  >
                     {skill.logo ? (
                       <img src={skill.logo} alt={skill.name} className="skill-logo" />
                     ) : (

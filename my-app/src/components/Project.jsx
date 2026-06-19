@@ -72,19 +72,39 @@ const Project = () => {
       <div className="projects-container">
         
         {/* Header */}
-        <motion.div 
-          className="projects-header-minimal"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <span className="section-label">Selected Works</span>
-          <h1 className="projects-title">Featured Projects</h1>
-          <p className="projects-desc">
+        <div className="projects-header-minimal">
+          <div className="mask-wrapper">
+            <motion.span 
+              className="section-label"
+              initial={{ y: "100%" }}
+              whileInView={{ y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            >
+              Selected Works
+            </motion.span>
+          </div>
+          <div className="mask-wrapper" style={{ marginBottom: "20px" }}>
+            <motion.h1 
+              className="projects-title"
+              initial={{ y: "100%" }}
+              whileInView={{ y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.05 }}
+            >
+              Featured Projects
+            </motion.h1>
+          </div>
+          <motion.p 
+            className="projects-desc"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+          >
             A showcase of web applications and software systems, emphasizing clean code, performance, and responsive UI design.
-          </p>
-        </motion.div>
+          </motion.p>
+        </div>
 
         {/* Desktop Typographic Rows */}
         <div className="projects-desktop-list">
