@@ -6,6 +6,7 @@ import prepgenie from "../assets/Prepgenie.png";
 import chat from "../assets/Quickchat.png";
 import spark from "../assets/Spark.png";
 import feasto from "../assets/Feasto.png";
+import insider from "../assets/InsiderJobs.png";
 import "./Project.css";
 
 const projects = [
@@ -23,6 +24,17 @@ const projects = [
   {
     id: 2,
     num: "02",
+    title: "InsiderJobs",
+    category: "Job Search Command Center",
+    description: "A comprehensive career portal turning job search into a focused workspace featuring verified listings, recruiter dashboard utilities, and application status trackers.",
+    image: insider,
+    tags: ["React.js", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
+    liveLink: "https://insider-jobs-ecru.vercel.app/",
+    githubLink: "https://github.com/SarthakDudhe/InsiderJobs",
+  },
+  {
+    id: 3,
+    num: "03",
     title: "QuickChat App",
     category: "Real-time Messaging Service",
     description: "A secure instant messaging platform featuring real-time communication via Socket.IO, JWT user authorization, and persistent chat archives.",
@@ -32,8 +44,8 @@ const projects = [
     githubLink: "https://github.com/SarthakDudhe/ChatApplication",
   },
   {
-    id: 3,
-    num: "03",
+    id: 4,
+    num: "04",
     title: "Smart Food Ordering Platform",
     category: "Food Ordering System",
     description: "A full-stack food delivery application with user authentication, secure payment gateway processing via Stripe, and clean checkout states.",
@@ -43,8 +55,8 @@ const projects = [
     githubLink: "https://github.com/SarthakDudhe/Feasto-Food-Order-Platform",
   },
   {
-    id: 4,
-    num: "04",
+    id: 5,
+    num: "05",
     title: "Cab Booking System",
     category: "Desktop Application",
     description: "A robust Java-based booking system designed with Swing GUI, implementing database architectures for passenger dispatching and ride logs.",
