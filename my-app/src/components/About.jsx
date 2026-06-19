@@ -1,27 +1,46 @@
 import "./About.css"
 import mypic from "../assets/bluepic.png"
 import { Briefcase, GraduationCap } from 'lucide-react';
+import { motion } from "framer-motion";
 import 'animate.css';
 
 export default function About() {
   return (
     <section className="about-section" id="about">
-      <div className="about-header">
+      <motion.div 
+        className="about-header"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.8 }}
+      >
         <h1>ABOUT ME</h1>
         <p className="about-subtitle">Get to know my background, experience, and education</p>
-      </div>
+      </motion.div>
 
       <div className="about-content">
         {/* Left column: Profile Card */}
-        <div className="about-avatar-container">
+        <motion.div 
+          className="about-avatar-container"
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
           <div className="about-avatar-wrapper">
             <div className="about-avatar-glow"></div>
             <img src={mypic} alt="Sarthak Dudhe" id="my-img" />
           </div>
-        </div>
+        </motion.div>
 
         {/* Right column: Bio + Cards */}
-        <div className="about-details">
+        <motion.div 
+          className="about-details"
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
           {/* Info cards (Experience & Education) */}
           <div className="about-cards-grid">
             <div className="education">
@@ -55,7 +74,7 @@ export default function About() {
               Take a look around my portfolio to see my projects, achievements, and experiences. Feel free to connect with me for opportunities or collaborations!
             </p>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

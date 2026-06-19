@@ -1,5 +1,6 @@
 import "./Card.css"
 import { Code2, Database, Globe, Server } from 'lucide-react';
+import { motion } from "framer-motion";
 
 import html from "../assets/htmllogo.png"
 import css from "../assets/csslogo.png"
@@ -16,12 +17,25 @@ import React from 'react';
 const Card = () => {
   return (
    <div className="tech-stack" id="skills">
-        <div className="tech-header">
+        <motion.div 
+          className="tech-header"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8 }}
+        >
           <h2>My Tech Stack</h2>
           <p className="tech-subtitle">Technologies and tools I use to bring designs and products to life</p>
-        </div>
+        </motion.div>
+        
         <div className="skills-container">
-          <div className="skill-card">
+          <motion.div 
+            className="skill-card"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
             <Code2 size={48} />
             <h3>Frontend Development</h3>
             <div className="skills">
@@ -42,9 +56,15 @@ const Card = () => {
                 React
               </span>
             </div>
-          </div>
+          </motion.div>
   
-          <div className="skill-card">
+          <motion.div 
+            className="skill-card"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             <Server size={48} />
             <h3>Backend Development</h3>
             <div className="skills">
@@ -62,9 +82,15 @@ const Card = () => {
                 Java
               </span>
             </div>
-          </div>
+          </motion.div>
   
-          <div className="skill-card">
+          <motion.div 
+            className="skill-card"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
             <Database size={48} />
             <h3>Databases</h3>
             <div className="skills">
@@ -78,15 +104,21 @@ const Card = () => {
               </span>
               <span>Firebase</span>
             </div>
-          </div>
+          </motion.div>
   
-          <div className="skill-card">
+          <motion.div 
+            className="skill-card"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
             <Globe size={48} />
             <h3> Tools</h3>
             <div className="skills">
               <span>Git</span>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
   )

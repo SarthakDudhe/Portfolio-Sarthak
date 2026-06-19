@@ -2,6 +2,8 @@ import { useState } from "react";
 import "./Contact.css"
 import { Github, Linkedin, Mail, Twitter,Phone,MapPin,Clock } from 'lucide-react';
 import emailjs from "@emailjs/browser";
+import { motion } from "framer-motion";
+
 function Contact()
 {
 const [formData,setformData] =useState({
@@ -42,9 +44,24 @@ const handlesubmit=(event)=>{
 
     return(
 <section className="contact-section" id="contact">
-        <h2 className="contact-title">Get in Touch</h2>
+        <motion.h2 
+          className="contact-title"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8 }}
+        >
+          Get in Touch
+        </motion.h2>
+        
         <div className="contact-container">
-          <div className="contact-info">
+          <motion.div 
+            className="contact-info"
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
             <h3>Let's Connect</h3>
             <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.</p>
             
@@ -70,13 +87,6 @@ const handlesubmit=(event)=>{
                   <span>Dombivli, Thane</span>
                 </div>
               </div>
-              {/* <div className="contact-item">
-                <Clock className="contact-icon" />
-                <div>
-                  <span className="contact-label">Working Hours:</span>
-                  <span>Mon - Fri, 9AM - 6PM PST</span>
-                </div>
-              </div> */}
             </div>
 
             <div className="social-links">
@@ -90,9 +100,16 @@ const handlesubmit=(event)=>{
                 <Mail />
               </a>
             </div>
-          </div>
+          </motion.div>
 
-          <form className="contact-form"  onSubmit={handlesubmit}>
+          <motion.form 
+            className="contact-form"  
+            onSubmit={handlesubmit}
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
             <div className="form-group">
               <input
                 type="text"
@@ -114,14 +131,6 @@ const handlesubmit=(event)=>{
               />
             </div>
             <div className="form-group">
-              {/* <input
-                type="text"
-                name="subject"
-                placeholder="Subject"
-                
-             
-                required
-              /> */}
             </div>
             <div className="form-group">
               <input
@@ -136,7 +145,7 @@ const handlesubmit=(event)=>{
             <button type="submit" className="submit-button">
               Send Message
             </button>
-          </form>
+          </motion.form>
         </div>
       </section>
 
