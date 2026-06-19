@@ -99,6 +99,9 @@
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .skills span::before {
@@ -115,12 +118,24 @@
 }
 
 .skills span:hover {
-  color: #3306fa;
+  color: #000000;
   border-color: transparent;
+  font-weight: 600;
 }
 
 .skills span:hover::before {
   opacity: 1;
+}
+
+.tech-logo {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.skills span:hover .tech-logo {
+  transform: scale(1.2) rotate(5deg);
 }
 
 /* Media Queries */

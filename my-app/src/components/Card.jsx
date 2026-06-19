@@ -1,5 +1,5 @@
 import "./Card.css"
-import { Code2, Database, Globe, Layout, Server, Smartphone } from 'lucide-react';
+import { Code2, Database, Globe, Server } from 'lucide-react';
 
 import html from "../assets/htmllogo.png"
 import css from "../assets/csslogo.png"
@@ -12,23 +12,32 @@ import python from "../assets/pythonlogo.png"
 import react from "../assets/react.svg"
 
 import React from 'react';
-import styled from 'styled-components';
-
 
 const Card = () => {
   return (
-   <div className="tech-stack"  id="skills">
+   <div className="tech-stack" id="skills">
         <h2>My Tech Stack</h2>
         <div className="skills-container">
           <div className="skill-card">
             <Code2 size={48} />
             <h3>Frontend Development</h3>
             <div className="skills">
-              <span>HTML</span>
-              <span>CSS</span>
-              <span>JavaScript</span>
-              <span>React</span>
-              
+              <span>
+                <img src={html} alt="HTML" className="tech-logo" />
+                HTML
+              </span>
+              <span>
+                <img src={css} alt="CSS" className="tech-logo" />
+                CSS
+              </span>
+              <span>
+                <img src={js} alt="JavaScript" className="tech-logo" />
+                JavaScript
+              </span>
+              <span>
+                <img src={react} alt="React" className="tech-logo" />
+                React
+              </span>
             </div>
           </div>
   
@@ -36,10 +45,19 @@ const Card = () => {
             <Server size={48} />
             <h3>Backend Development</h3>
             <div className="skills">
-              <span>Node.js</span>
+              <span>
+                <img src={node} alt="Node.js" className="tech-logo" />
+                Node.js
+              </span>
               <span>Express</span>
-              <span>Python</span>
-              <span>Java</span>
+              <span>
+                <img src={python} alt="Python" className="tech-logo" />
+                Python
+              </span>
+              <span>
+                <img src={java} alt="Java" className="tech-logo" />
+                Java
+              </span>
             </div>
           </div>
   
@@ -47,8 +65,14 @@ const Card = () => {
             <Database size={48} />
             <h3>Databases</h3>
             <div className="skills">
-              <span>MongoDB</span>
-              <span>MySQL</span>
+              <span>
+                <img src={mongo} alt="MongoDB" className="tech-logo" />
+                MongoDB
+              </span>
+              <span>
+                <img src={mysql} alt="MySQL" className="tech-logo" />
+                MySQL
+              </span>
               <span>Firebase</span>
             </div>
           </div>
@@ -58,37 +82,12 @@ const Card = () => {
             <h3> Tools</h3>
             <div className="skills">
               <span>Git</span>
-             
             </div>
           </div>
-  
-          {/* <div className="skill-card">
-            <Layout size={48} />
-            <h3>UI/UX Design</h3>
-            <div className="skills">
-              <span>Figma</span>
-              <span>Adobe XD</span>
-              <span>Photoshop</span>
-            </div>
-          </div> */}
-  
-          {/* <div className="skill-card">
-            <Smartphone size={48} />
-            <h3>Mobile Development</h3>
-            <div className="skills">
-              <span>React Native</span>
-              <span>Flutter</span>
-              <span>iOS</span>
-              <span>Android</span>
-            </div>
-
-          </div> */}
         </div>
       </div>
-
-
-)
-  }
+  )
+}
 
 export default Card;
 
