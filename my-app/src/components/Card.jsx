@@ -11,7 +11,6 @@ import node from "../assets/nodelogo.png"
 import python from "../assets/pythonlogo.png"
 import react from "../assets/react.svg"
 import React from 'react';
-import { InteractiveQuantumCore } from "./ui/InteractiveQuantumCore";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -81,9 +80,6 @@ const Card = () => {
 
   return (
     <section className="tech-stack-section" id="skills">
-      {/* Background Interactive Nodes Canvas */}
-      <InteractiveQuantumCore />
-
       <div className="tech-container">
         
         {/* Left Column: Heading */}
