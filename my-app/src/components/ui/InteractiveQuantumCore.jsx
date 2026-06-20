@@ -75,20 +75,7 @@ export function InteractiveQuantumCore() {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Draw subtle pulsing background radial core
-      const gradient = ctx.createRadialGradient(
-        canvas.width / 2,
-        canvas.height / 2,
-        20,
-        canvas.width / 2,
-        canvas.height / 2,
-        Math.min(canvas.width, canvas.height) * 0.4
-      );
-      gradient.addColorStop(0, "rgba(74, 158, 255, 0.05)");
-      gradient.addColorStop(0.5, "rgba(155, 81, 224, 0.02)");
-      gradient.addColorStop(1, "transparent");
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
 
       // Update and draw particles
       particles.forEach((p) => {

@@ -99,6 +99,9 @@
   
   .navbar.scrolled {
     padding: 0.95rem 20px;
+    background: rgba(10, 10, 11, 0.95);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 
   .nav-toggle {
@@ -112,9 +115,9 @@
     position: absolute;
     top: 75px;
     left: 16px;
-    background: rgba(10, 10, 11, 0.92);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: rgba(10, 10, 11, 0.98);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 20px;
     flex-direction: column;
