@@ -83,7 +83,7 @@ export default function About() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
           >
-            I'm a Computer Engineering student and Full-Stack Developer specializing in the MERN stack (React, Node, Express, MongoDB). I focus on building robust APIs, optimizing system speed, and translating complex designs into interactive, high-fidelity web platforms.
+            I'm a Computer Engineering student and Full-Stack Developer specializing in the MERN stack (React, Node, Express, MongoDB). Recently, I completed a Software Engineer Internship at Sapphire Infocom (Aug 14, 2025 – Nov 13, 2025), where I built robust APIs, optimized system speed, and translated complex designs into high-performance web platforms.
           </motion.p>
 
           {/* Minimal Key Indicators Grid */}
@@ -104,7 +104,7 @@ export default function About() {
             </div>
             <div className="stat-item">
               <span className="stat-number">Intern</span>
-              <span className="stat-label">Software Engineer Experience</span>
+              <span className="stat-label">Sapphire Infocom (Aug 14 – Nov 13, 2025)</span>
             </div>
           </motion.div>
 
