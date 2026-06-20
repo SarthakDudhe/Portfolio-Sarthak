@@ -9,7 +9,20 @@ import Contact from './components/Contact'
 import Achieve from './components/Achieve'
 import { Route, Routes, BrowserRouter } from "react-router-dom"
 import { InteractiveQuantumCore } from "./components/ui/InteractiveQuantumCore"
+import { motion } from "framer-motion"
 import './App.css'
+
+const revealVariants = {
+  hidden: { opacity: 0, y: 35 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: {
+      duration: 1.0,
+      ease: [0.16, 1, 0.3, 1]
+    }
+  }
+};
 
 function App() {
   const [showCanvas, setShowCanvas] = useState(false);
@@ -45,11 +58,51 @@ function App() {
             <InteractiveQuantumCore />
           </div>
           <Hero />
-          <About />
-          <Card />
-          <Achieve />
-          <Project />
-          <Contact />
+          
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.12 }}
+            variants={revealVariants}
+          >
+            <About />
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.12 }}
+            variants={revealVariants}
+          >
+            <Card />
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.12 }}
+            variants={revealVariants}
+          >
+            <Achieve />
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.12 }}
+            variants={revealVariants}
+          >
+            <Project />
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.12 }}
+            variants={revealVariants}
+          >
+            <Contact />
+          </motion.div>
         </main>
         <Footer />
       </BrowserRouter>
