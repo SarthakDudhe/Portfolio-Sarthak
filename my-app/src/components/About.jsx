@@ -3,6 +3,7 @@ import { ArrowUpRight, BriefcaseBusiness, Code2, GraduationCap } from "lucide-re
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import mypic from "../assets/bluepic.png";
 import "./About.css";
+import { fadeUp, maskReveal, sectionReveal, staggerContainer } from "../lib/motion";
 
 const MotionSection = motion.section;
 const MotionDiv = motion.div;
@@ -55,15 +56,13 @@ export default function About() {
       id="about"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.25 }}
+      viewport={{ once: true, amount: 0.22 }}
+      variants={sectionReveal}
     >
       <div className="about-container">
         <MotionDiv
           className="about-portrait-column"
-          variants={{
-            hidden: { opacity: 0, y: 48 },
-            visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] } },
-          }}
+          variants={fadeUp(0.08)}
         >
           <MotionDiv
             ref={cardRef}
@@ -82,24 +81,21 @@ export default function About() {
 
         <div className="about-content-column">
           <div className="mask-wrapper">
-            <MotionDiv
-              className="section-label"
-              variants={{
-                hidden: { y: "120%" },
-                visible: { y: 0, transition: { duration: 0.75, ease: [0.16, 1, 0.3, 1] } },
-              }}
-            >
+            <MotionDiv className="section-label" variants={maskReveal}>
               About
             </MotionDiv>
           </div>
 
+          <MotionDiv className="about-chip-row" variants={fadeUp(0.06)}>
+            <span>Frontend systems</span>
+            <span>Product UI</span>
+            <span>Motion details</span>
+          </MotionDiv>
+
           <div className="mask-wrapper">
             <MotionH1
               className="about-headline"
-              variants={{
-                hidden: { y: "115%" },
-                visible: { y: 0, transition: { duration: 0.9, delay: 0.08, ease: [0.16, 1, 0.3, 1] } },
-              }}
+              variants={maskReveal}
             >
               I design and engineer <span className="gradient-text">full-stack interfaces</span> that feel fast, useful, and polished.
             </MotionH1>
@@ -107,20 +103,14 @@ export default function About() {
 
           <MotionP
             className="about-copy"
-            variants={{
-              hidden: { opacity: 0, y: 24 },
-              visible: { opacity: 1, y: 0, transition: { duration: 0.75, delay: 0.18, ease: [0.16, 1, 0.3, 1] } },
-            }}
+            variants={fadeUp(0.12)}
           >
             I am a Computer Engineering student and full-stack developer working across React, Node, Express, MongoDB, and applied AI workflows. During my Software Engineer Internship at Sapphire Infocom, I built APIs, improved system performance, and translated product requirements into clean, scalable web experiences.
           </MotionP>
 
           <MotionDiv
             className="about-proof-grid"
-            variants={{
-              hidden: { opacity: 0 },
-              visible: { opacity: 1, transition: { delayChildren: 0.25, staggerChildren: 0.1 } },
-            }}
+            variants={staggerContainer(0.16, 0.08)}
           >
             {statItems.map((item) => {
               const Icon = item.icon;
@@ -128,10 +118,7 @@ export default function About() {
                 <MotionDiv
                   className="about-proof-card"
                   key={item.label}
-                  variants={{
-                    hidden: { opacity: 0, y: 22 },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] } },
-                  }}
+                  variants={fadeUp(0)}
                 >
                   <Icon size={18} />
                   <span className="proof-value">{item.value}</span>
@@ -144,10 +131,7 @@ export default function About() {
 
           <MotionDiv
             className="about-actions"
-            variants={{
-              hidden: { opacity: 0, y: 18 },
-              visible: { opacity: 1, y: 0, transition: { duration: 0.65, delay: 0.38, ease: [0.16, 1, 0.3, 1] } },
-            }}
+            variants={fadeUp(0.24)}
           >
             <a
               href="https://linkedin.com/in/sarthak-dudhe-67155a327"
@@ -162,10 +146,10 @@ export default function About() {
             </a>
           </MotionDiv>
 
-          <div className="about-running-note">
+          <MotionDiv className="about-running-note" variants={fadeUp(0.3)}>
             <span>Focus</span>
             <strong>Interactive web products, AI workflows, and production-ready React interfaces.</strong>
-          </div>
+          </MotionDiv>
         </div>
       </div>
     </MotionSection>

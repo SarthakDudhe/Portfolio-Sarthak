@@ -5,6 +5,7 @@ import machineLearning from "../assets/ML_Certificate.png";
 import javaCert from "../assets/Java.jpg";
 import mysqlCert from "../assets/MySQL.jpg";
 import "./Achieve.css";
+import { fadeUp, sectionReveal, staggerContainer } from "../lib/motion";
 
 const MotionSection = motion.section;
 const MotionDiv = motion.div;
@@ -46,11 +47,6 @@ const certificationData = [
   },
 ];
 
-const itemVariants = {
-  hidden: { opacity: 0, x: -28 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.72, ease: [0.16, 1, 0.3, 1] } },
-};
-
 export default function Achieve() {
   const [selectedCert, setSelectedCert] = useState(null);
   const [activeCert, setActiveCert] = useState(certificationData[0]);
@@ -68,16 +64,17 @@ export default function Achieve() {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.18 }}
+      variants={sectionReveal}
     >
       <div className="achieve-container">
         <div className="achieve-header">
           <div>
             <div className="section-label">Credentials</div>
-            <MotionH2 className="achieve-title" variants={itemVariants}>
+            <MotionH2 className="achieve-title" variants={fadeUp(0.06)}>
               Learning milestones with <span className="gradient-text">proof you can inspect.</span>
             </MotionH2>
           </div>
-          <MotionP className="achieve-desc" variants={itemVariants}>
+          <MotionP className="achieve-desc" variants={fadeUp(0.12)}>
             Certifications and structured coursework that support the engineering side of my portfolio: backend fundamentals, databases, Java, full-stack development, and ML concepts.
           </MotionP>
         </div>
@@ -86,10 +83,7 @@ export default function Achieve() {
           <MotionDiv
             className="achieve-timeline"
             ref={timelineRef}
-            variants={{
-              hidden: { opacity: 0 },
-              visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-            }}
+            variants={staggerContainer(0.12, 0.08)}
           >
             <motion.div className="timeline-spine-fill" style={{ scaleY: spineScale }} />
 
@@ -97,7 +91,7 @@ export default function Achieve() {
               <MotionDiv
                 className={`timeline-item ${activeCert.id === cert.id ? "active" : ""}`}
                 key={cert.id}
-                variants={itemVariants}
+                variants={fadeUp(0)}
                 onMouseEnter={() => setActiveCert(cert)}
                 onFocus={() => setActiveCert(cert)}
               >

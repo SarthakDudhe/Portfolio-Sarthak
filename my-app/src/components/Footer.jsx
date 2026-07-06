@@ -1,5 +1,7 @@
 import { Github, Linkedin, Mail } from "lucide-react";
+import { motion } from "framer-motion";
 import "./Footer.css";
+import { fadeUp, sectionReveal, staggerContainer } from "../lib/motion";
 
 const navLinks = [
   ["Home", "#home"],
@@ -12,9 +14,9 @@ const navLinks = [
 
 export default function Footer() {
   return (
-    <footer className="footer">
-      <div className="footer-content">
-        <div className="footer-brand">
+    <motion.footer className="footer" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.15 }} variants={sectionReveal}>
+      <motion.div className="footer-content" variants={staggerContainer(0.06, 0.08)}>
+        <motion.div className="footer-brand" variants={fadeUp(0)}>
           <span>SD</span>
           <h2>Sarthak Dudhe</h2>
           <p>Full-stack developer focused on polished frontend experiences, reliable APIs, and product-minded engineering.</p>
@@ -29,9 +31,9 @@ export default function Footer() {
               <Mail size={20} />
             </a>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="footer-column">
+        <motion.div className="footer-column" variants={fadeUp(0)}>
           <h3>Navigation</h3>
           <ul>
             {navLinks.map(([label, href]) => (
@@ -40,20 +42,20 @@ export default function Footer() {
               </li>
             ))}
           </ul>
-        </div>
+        </motion.div>
 
-        <div className="footer-column">
+        <motion.div className="footer-column" variants={fadeUp(0)}>
           <h3>Profile</h3>
           <p>Dombivli, Maharashtra</p>
           <p>Open to internships and frontend-heavy full-stack roles.</p>
           <a href="mailto:sarthakdudhe79@gmail.com">sarthakdudhe79@gmail.com</a>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
-      <div className="footer-bottom">
+      <motion.div className="footer-bottom" variants={fadeUp(0.1)}>
         <span>Portfolio designed and built with React.</span>
         <span>{new Date().getFullYear()} Sarthak Dudhe. All rights reserved.</span>
-      </div>
-    </footer>
+      </motion.div>
+    </motion.footer>
   );
 }

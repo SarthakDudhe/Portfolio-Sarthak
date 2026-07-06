@@ -6,6 +6,34 @@
   overflow: hidden;
 }
 
+.hero-video-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hero-video-layer video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.68;
+  filter: saturate(0.98) contrast(1.08) brightness(0.82);
+  transform: none;
+  display: block;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(5, 6, 8, 0.08), rgba(5, 6, 8, 0.34)),
+    radial-gradient(circle at 50% 42%, rgba(102, 145, 255, 0.06), transparent 36%);
+}
+
 .hero-container {
   display: flex;
   flex-direction: column;
@@ -17,6 +45,8 @@
   justify-content: center;
   box-sizing: border-box;
   overflow: hidden;
+  position: relative;
+  z-index: 2;
 }
 
 .hero-title-wrapper {

@@ -1,10 +1,10 @@
 import "./Hero.css"
 import React, { useState, useEffect } from 'react';
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import backgroundVideo from "../assets/background.mp4";
-import { Spotlight } from "./ui/spotlight";
 
 const MotionDiv = motion.div;
+const MotionVideoLayer = motion.div;
 
 function Hero() {
   const words = ["SARTHAK DUDHE", "FULLSTACK DEVELOPER"];
@@ -12,6 +12,10 @@ function Hero() {
   const [displayedText, setDisplayedText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [typingSpeed, setTypingSpeed] = useState(120);
+  const { scrollYProgress } = useScroll();
+  const heroVideoY = useTransform(scrollYProgress, [0, 0.35], [0, 70]);
+  const heroContentY = useTransform(scrollYProgress, [0, 0.28], [0, -44]);
+  const heroContentOpacity = useTransform(scrollYProgress, [0, 0.22], [1, 0.6]);
 
   useEffect(() => {
     let timer;
@@ -46,28 +50,23 @@ function Hero() {
 
   return (
     <div className="front-page relative overflow-hidden" id="home">
-      {/* Background Video */}
-      <div className="absolute inset-0 z-0 opacity-45 pointer-events-none">
+      <MotionVideoLayer className="hero-video-layer" aria-hidden="true" style={{ y: heroVideoY }}>
         <video
           src={backgroundVideo}
           autoPlay
           loop
           muted
           playsInline
-          className="w-full h-full object-cover"
+          preload="auto"
         />
-      </div>
-
-      <Spotlight
-        className="-top-40 left-0 md:left-60 md:-top-20"
-        fill="white"
-      />
-      
+      </MotionVideoLayer>
+      <div className="hero-overlay" aria-hidden="true" />
       <div className="hero-container">
         <MotionDiv 
           className="hero-title-wrapper z-10"
           initial={{ opacity: 0, y: 30, scale: 0.98 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
+          style={{ y: heroContentY, opacity: heroContentOpacity }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
         >
           <h1 className="hero-typing-title">

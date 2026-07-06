@@ -3,6 +3,7 @@ import { Github, Linkedin, Mail, MapPin, Send } from "lucide-react";
 import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
 import "./Contact.css";
+import { fadeUp, sectionReveal } from "../lib/motion";
 
 const MotionSection = motion.section;
 const MotionDiv = motion.div;
@@ -47,35 +48,27 @@ export default function Contact() {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.22 }}
+      variants={sectionReveal}
     >
       <div className="contact-container">
         <MotionDiv
           className="contact-left"
-          variants={{
-            hidden: { opacity: 0, y: 34 },
-            visible: { opacity: 1, y: 0, transition: { duration: 0.75, ease: [0.16, 1, 0.3, 1] } },
-          }}
+          variants={fadeUp(0.04)}
         >
           <div className="section-label">Contact</div>
-          <div className="contact-chip-row">
+          <MotionDiv className="contact-chip-row" variants={fadeUp(0.08)}>
             <span>Available for internships</span>
             <span>Frontend-led full stack</span>
-          </div>
+          </MotionDiv>
           <MotionH2
             className="contact-title"
-            variants={{
-              hidden: { opacity: 0, y: 30 },
-              visible: { opacity: 1, y: 0, transition: { duration: 0.78, delay: 0.08, ease: [0.16, 1, 0.3, 1] } },
-            }}
+            variants={fadeUp(0.12)}
           >
             Let&apos;s build a <span className="gradient-text">sharp product interface.</span>
           </MotionH2>
           <MotionP
             className="contact-sub"
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              visible: { opacity: 1, y: 0, transition: { duration: 0.7, delay: 0.16, ease: [0.16, 1, 0.3, 1] } },
-            }}
+            variants={fadeUp(0.18)}
           >
             Open to internships and frontend-heavy full-stack roles where motion, clarity, and reliability matter.
           </MotionP>
@@ -106,10 +99,7 @@ export default function Contact() {
         <MotionForm
           className="contact-form"
           onSubmit={handleSubmit}
-          variants={{
-            hidden: { opacity: 0, y: 34 },
-            visible: { opacity: 1, y: 0, transition: { duration: 0.75, delay: 0.08, ease: [0.16, 1, 0.3, 1] } },
-          }}
+          variants={fadeUp(0.08)}
         >
           <div className="contact-form-grid">
             <label className="field-group">

@@ -7,6 +7,7 @@ import spark from "../assets/Spark.png";
 import feasto from "../assets/Feasto.png";
 import insider from "../assets/InsiderJobs.png";
 import "./Project.css";
+import { fadeUp, sectionReveal, staggerContainer } from "../lib/motion";
 
 const MotionSection = motion.section;
 const MotionDiv = motion.div;
@@ -76,11 +77,6 @@ const projects = [
   },
 ];
 
-const reveal = {
-  hidden: { opacity: 0, y: 32 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.72, ease: [0.16, 1, 0.3, 1] } },
-};
-
 export default function Project() {
   const [activeIndex, setActiveIndex] = useState(0);
   const activeProject = projects[activeIndex];
@@ -92,16 +88,17 @@ export default function Project() {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.12 }}
+      variants={sectionReveal}
     >
       <div className="projects-container">
         <div className="projects-header">
           <div>
             <div className="section-label">Selected works</div>
-            <MotionH2 className="projects-title" variants={reveal}>
+            <MotionH2 className="projects-title" variants={fadeUp(0.06)}>
               Case-study style builds with <span className="gradient-text">real product surfaces.</span>
             </MotionH2>
           </div>
-          <MotionP className="projects-desc" variants={reveal}>
+          <MotionP className="projects-desc" variants={fadeUp(0.12)}>
             A focused selection of full-stack products, AI workflows, real-time features, payment flows, and desktop systems. Hover or tap a project to inspect the build.
           </MotionP>
         </div>
@@ -109,16 +106,13 @@ export default function Project() {
         <div className="projects-showcase-grid">
           <MotionDiv
             className="projects-index"
-            variants={{
-              hidden: { opacity: 0 },
-              visible: { opacity: 1, transition: { staggerChildren: 0.08 } },
-            }}
+            variants={staggerContainer(0.12, 0.08)}
           >
             {projects.map((project, index) => (
               <MotionDiv
                 key={project.id}
                 className={`project-index-row ${index === activeIndex ? "active" : ""}`}
-                variants={reveal}
+                variants={fadeUp(0)}
                 onMouseEnter={() => setActiveIndex(index)}
                 onClick={() => setActiveIndex(index)}
                 role="button"
@@ -182,7 +176,7 @@ export default function Project() {
 
         <div className="projects-mobile-list">
           {projects.map((project) => (
-              <MotionDiv className="project-mobile-card" key={project.id} variants={reveal}>
+              <MotionDiv className="project-mobile-card" key={project.id} variants={fadeUp(0)}>
                 <div className="project-mobile-image">
                 <img src={project.image} alt={`${project.title} preview`} loading="lazy" decoding="async" />
                 </div>

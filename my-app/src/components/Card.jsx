@@ -10,6 +10,7 @@ import node from "../assets/nodelogo.png";
 import python from "../assets/pythonlogo.png";
 import react from "../assets/react.svg";
 import "./Card.css";
+import { fadeUp, sectionReveal, staggerContainer } from "../lib/motion";
 
 const MotionSection = motion.section;
 const MotionDiv = motion.div;
@@ -62,16 +63,6 @@ const categories = [
   },
 ];
 
-const container = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 28 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
-};
-
 export default function Card() {
   return (
     <MotionSection
@@ -80,30 +71,31 @@ export default function Card() {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
+      variants={sectionReveal}
     >
       <div className="tech-container">
         <div className="tech-editorial">
           <div className="section-label">Capabilities</div>
-          <MotionH2 className="tech-main-title" variants={item}>
+          <MotionH2 className="tech-main-title" variants={fadeUp(0.06)}>
             A practical stack for building <span className="gradient-text">complete web products.</span>
           </MotionH2>
-          <MotionP className="tech-desc" variants={item}>
+          <MotionP className="tech-desc" variants={fadeUp(0.12)}>
             I work across the product surface and the API layer, with a preference for clean interfaces, readable systems, and interaction details that make software feel finished.
           </MotionP>
 
-          <MotionDiv className="tech-system-note" variants={item}>
+          <MotionDiv className="tech-system-note" variants={fadeUp(0.18)}>
             <Sparkles size={18} />
             <span>Design sense plus engineering execution - the useful overlap for frontend-heavy full-stack work.</span>
           </MotionDiv>
         </div>
 
-        <MotionDiv className="capability-grid" variants={container}>
+        <MotionDiv className="capability-grid" variants={staggerContainer(0.16, 0.08)}>
           {categories.map((category, index) => {
             const Icon = category.icon;
             return (
               <MotionDiv
                 className="capability-panel"
-                variants={item}
+                variants={fadeUp(0)}
                 key={category.title}
                 whileHover={{ y: -8, transition: { duration: 0.25 } }}
               >

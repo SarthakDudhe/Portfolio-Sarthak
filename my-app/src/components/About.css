@@ -1,6 +1,6 @@
 .about-section {
   position: relative;
-  padding: 150px 0 120px;
+  padding: 120px 0 92px;
   color: var(--text-main);
   content-visibility: auto;
   contain-intrinsic-size: 900px;
@@ -10,8 +10,8 @@
   width: var(--container);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: minmax(300px, 0.85fr) minmax(0, 1.35fr);
-  gap: clamp(56px, 8vw, 110px);
+  grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.3fr);
+  gap: clamp(38px, 6vw, 84px);
   align-items: center;
 }
 
@@ -22,7 +22,7 @@
 
 .about-image-card {
   position: relative;
-  min-height: 520px;
+  min-height: 460px;
   border-radius: var(--radius);
   overflow: hidden;
   border: 1px solid var(--line);
@@ -51,7 +51,7 @@
 .profile-img {
   width: 100%;
   height: 100%;
-  min-height: 520px;
+  min-height: 460px;
   display: block;
   object-fit: cover;
   filter: saturate(0.86) contrast(1.08);
@@ -60,9 +60,9 @@
 
 .portrait-meta {
   position: absolute;
-  left: 28px;
-  right: 28px;
-  bottom: 28px;
+  left: 24px;
+  right: 24px;
+  bottom: 24px;
   z-index: 4;
   display: flex;
   justify-content: space-between;
@@ -78,20 +78,41 @@
 }
 
 .about-headline {
-  margin: 18px 0 26px;
-  max-width: 820px;
+  margin: 14px 0 18px;
+  max-width: 760px;
   color: var(--text-main);
-  font-size: clamp(2.5rem, 5.2vw, 5.8rem);
+  font-size: clamp(2.25rem, 4.7vw, 4.9rem);
   font-weight: 820;
   line-height: 0.94;
+  letter-spacing: 0;
+}
+
+.about-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.about-chip-row span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-soft);
+  font-size: 0.72rem;
+  font-weight: 850;
   letter-spacing: 0;
 }
 
 .about-copy {
   max-width: 740px;
   color: var(--text-soft);
-  font-size: 1.05rem;
-  line-height: 1.85;
+  font-size: 0.98rem;
+  line-height: 1.78;
 }
 
 .about-proof-grid {
@@ -100,12 +121,12 @@
   border: 1px solid var(--line);
   border-radius: var(--radius);
   overflow: hidden;
-  margin-top: 42px;
+  margin-top: 32px;
 }
 
 .about-proof-card {
-  min-height: 190px;
-  padding: 24px;
+  min-height: 168px;
+  padding: 22px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.014));
   border-right: 1px solid var(--line);
 }
@@ -116,7 +137,7 @@
 
 .about-proof-card svg {
   color: var(--accent-warm);
-  margin-bottom: 22px;
+  margin-bottom: 18px;
 }
 
 .proof-value {
@@ -129,16 +150,16 @@
 
 .proof-label {
   display: block;
-  margin-top: 10px;
+  margin-top: 8px;
   color: var(--text-main);
   font-size: 0.85rem;
   font-weight: 800;
 }
 
 .about-proof-card p {
-  margin-top: 10px;
+  margin-top: 8px;
   color: var(--text-muted);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   line-height: 1.55;
 }
 
@@ -147,15 +168,15 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 22px;
-  margin-top: 38px;
+  margin-top: 30px;
 }
 
 .about-running-note {
   display: flex;
   align-items: flex-start;
   gap: 14px;
-  margin-top: 32px;
-  padding-top: 18px;
+  margin-top: 24px;
+  padding-top: 16px;
   border-top: 1px solid var(--line);
 }
 
@@ -213,29 +234,29 @@
   }
 
   .about-image-card {
-    min-height: 430px;
+    min-height: 400px;
   }
 
   .profile-img {
-    min-height: 430px;
+    min-height: 400px;
   }
 
 }
 
 @media (max-width: 680px) {
   .about-section {
-    padding: 100px 0 86px;
+    padding: 88px 0 72px;
   }
 
   .about-image-card,
   .profile-img {
-    min-height: 390px;
+    min-height: 350px;
   }
 
   .portrait-meta {
     flex-direction: column;
-    left: 24px;
-    right: 24px;
+    left: 20px;
+    right: 20px;
   }
 
   .about-proof-grid {
