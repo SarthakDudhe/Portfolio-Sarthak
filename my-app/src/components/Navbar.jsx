@@ -1,10 +1,8 @@
-import "./Navbar.css"
-import { Menu, X } from 'lucide-react';
-import 'animate.css';
-import { useState, useEffect } from "react";
+import "./Navbar.css";
+import { Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
 
-function Navbar()
-{
+function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -14,11 +12,7 @@ function Navbar()
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 20);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -26,12 +20,12 @@ function Navbar()
   }, []);
 
   return (
-    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+    <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
       <div className="brand">Portfolio</div>
-      <button className="nav-toggle" onClick={toggleMenu}>
+      <button className="nav-toggle" type="button" onClick={toggleMenu} aria-label="Toggle navigation">
         {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
       </button>
-      <ul className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
+      <ul className={`nav-links ${isMenuOpen ? "active" : ""}`}>
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
@@ -40,7 +34,7 @@ function Navbar()
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;

@@ -1,64 +1,59 @@
-import "./Footer.css"
-import React from 'react';
+import { Github, Linkedin, Mail } from "lucide-react";
+import "./Footer.css";
 
-import { Github, Linkedin, Mail } from 'lucide-react';
-function Footer()
-{
-return(
-    <div className="foot">
-   
-    
+const navLinks = [
+  ["Home", "#home"],
+  ["About", "#about"],
+  ["Skills", "#skills"],
+  ["Credentials", "#achievements"],
+  ["Projects", "#projects"],
+  ["Contact", "#contact"],
+];
+
+export default function Footer() {
+  return (
     <footer className="footer">
       <div className="footer-content">
-        <div className="footer-section main-info">
+        <div className="footer-brand">
+          <span>SD</span>
           <h2>Sarthak Dudhe</h2>
-          <p>Full-Stack Developer building polished web products.</p>
-          <div className="social-links">
-            <a href="https://github.com/SarthakDudhe" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Github size={24} /></a>
-            <a href="https://linkedin.com/in/sarthak-dudhe-67155a327" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Linkedin size={24} /></a>
-            <a href="mailto:sarthakdudhe79@gmail.com" aria-label="Email"><Mail size={24} /></a>
+          <p>Full-stack developer focused on polished frontend experiences, reliable APIs, and product-minded engineering.</p>
+          <div className="footer-socials">
+            <a href="https://github.com/SarthakDudhe" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <Github size={20} />
+            </a>
+            <a href="https://linkedin.com/in/sarthak-dudhe-67155a327" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <Linkedin size={20} />
+            </a>
+            <a href="mailto:sarthakdudhe79@gmail.com" aria-label="Email">
+              <Mail size={20} />
+            </a>
           </div>
         </div>
-        
-        <div className="footer-section">
+
+        <div className="footer-column">
           <h3>Navigation</h3>
           <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skill</a></li>
-            <li><a href="#achievements">Achievements</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
+            {navLinks.map(([label, href]) => (
+              <li key={href}>
+                <a href={href}>{label}</a>
+              </li>
+            ))}
           </ul>
         </div>
-        
-        <div className="footer-section">
-          {/* <h3>Services</h3>
-          <ul>
-            <li><a href="#web-development">Web Development</a></li>
-            <li><a href="#ui-design">UI Design</a></li>
-            
-          </ul> */}
-        </div>
-        
-        <div className="footer-section contact">
-          <h3>Contact</h3>
+
+        <div className="footer-column">
+          <h3>Profile</h3>
           <p>Dombivli, Maharashtra</p>
-          <p>sarthakdudhe79@gmail.com</p>
-          <p>Open to internships and full-stack roles.</p>
+          <p>Open to internships and frontend-heavy full-stack roles.</p>
+          <a href="mailto:sarthakdudhe79@gmail.com">sarthakdudhe79@gmail.com</a>
         </div>
       </div>
-      
+
       <div className="footer-bottom">
-        <div className="footer-line"></div>
-        <p>&copy; {new Date().getFullYear()} Sarthak Dudhe. All rights reserved.</p>
+        <span>Portfolio designed and built with React.</span>
+        <span>{new Date().getFullYear()} Sarthak Dudhe. All rights reserved.</span>
       </div>
     </footer>
-  </div>
-
-
-
-)
+  );
 }
-
-export default Footer;

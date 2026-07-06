@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
+const MotionSpan = motion.span;
+
 export function RevealText({
   text = "STUNNING",
   textColor = "text-white",
@@ -42,7 +44,7 @@ export function RevealText({
     <div className="flex items-center justify-center relative">
       <div className="flex">
         {text.split("").map((letter, index) => (
-          <motion.span
+          <MotionSpan
             key={index}
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
@@ -64,7 +66,7 @@ export function RevealText({
             }}
           >
             {/* Base text layer */}
-            <motion.span 
+            <MotionSpan 
               className={`absolute inset-0 ${textColor}`}
               animate={{ 
                 opacity: hoveredIndex === index ? 0 : 1 
@@ -72,9 +74,9 @@ export function RevealText({
               transition={{ duration: 0.1 }}
             >
               {letter}
-            </motion.span>
+            </MotionSpan>
             {/* Image text layer with background panning */}
-            <motion.span
+            <MotionSpan
               className="text-transparent bg-clip-text bg-cover bg-no-repeat"
               animate={{ 
                 opacity: hoveredIndex === index ? 1 : 0,
@@ -94,11 +96,11 @@ export function RevealText({
               }}
             >
               {letter}
-            </motion.span>
+            </MotionSpan>
             
             {/* Overlay text layer that sweeps across each letter */}
             {showRedText && (
-              <motion.span
+              <MotionSpan
                 className={`absolute inset-0 ${overlayColor} pointer-events-none`}
                 initial={{ opacity: 0 }}
                 animate={{ 
@@ -112,9 +114,9 @@ export function RevealText({
                 }}
               >
                 {letter}
-              </motion.span>
+              </MotionSpan>
             )}
-          </motion.span>
+          </MotionSpan>
         ))}
       </div>
     </div>

@@ -15,12 +15,12 @@ export const CardContainer = ({ children, className, containerClassName }) => {
     containerRef.current.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`;
   };
 
-  const handleMouseEnter = (e) => {
+  const handleMouseEnter = () => {
     setIsMouseEntered(true);
     if (!containerRef.current) return;
   };
 
-  const handleMouseLeave = (e) => {
+  const handleMouseLeave = () => {
     if (!containerRef.current) return;
     setIsMouseEntered(false);
     containerRef.current.style.transform = `rotateY(0deg) rotateX(0deg)`;
@@ -71,7 +71,7 @@ export const CardBody = ({ children, className }) => {
 };
 
 export const CardItem = ({
-  as: Tag = "div",
+  as: Element = "div",
   children,
   className,
   translateX = 0,
@@ -98,14 +98,14 @@ export const CardItem = ({
     }
   };
 
-  return (
-    <Tag
-      ref={ref}
-      className={cn("w-fit transition duration-200 ease-linear", className)}
-      {...rest}
-    >
-      {children}
-    </Tag>
+  return React.createElement(
+    Element,
+    {
+      ref,
+      className: cn("w-fit transition duration-200 ease-linear", className),
+      ...rest,
+    },
+    children
   );
 };
 

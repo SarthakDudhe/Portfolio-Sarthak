@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import backgroundVideo from "../assets/background.mp4";
 import { Spotlight } from "./ui/spotlight";
 
+const MotionDiv = motion.div;
+
 function Hero() {
   const words = ["SARTHAK DUDHE", "FULLSTACK DEVELOPER"];
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
@@ -62,7 +64,7 @@ function Hero() {
       />
       
       <div className="hero-container">
-        <motion.div 
+        <MotionDiv 
           className="hero-title-wrapper z-10"
           initial={{ opacity: 0, y: 30, scale: 0.98 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -72,7 +74,7 @@ function Hero() {
             {displayedText}
             <span className="typing-cursor">|</span>
           </h1>
-        </motion.div>
+        </MotionDiv>
       </div>
     </div>
   );

@@ -1,3 +1,10 @@
+.app-shell {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--page-bg);
+}
+
 .scroll-progress {
   position: fixed;
   top: 0;
@@ -7,23 +14,34 @@
   z-index: 3000;
   transform-origin: 0%;
   background: linear-gradient(90deg, var(--accent), var(--accent-warm));
-  box-shadow: 0 0 18px rgba(114, 167, 255, 0.48);
-}
-
-main {
-  isolation: isolate;
+  box-shadow: 0 0 20px rgba(122, 169, 255, 0.42);
 }
 
 .section-label {
-  color: var(--accent-warm) !important;
-  font-size: 0.78rem !important;
-  font-weight: 700 !important;
-  letter-spacing: 0 !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--accent-warm);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
+.section-label::before {
+  content: "";
+  width: 34px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.72;
+}
+
 .gradient-text {
-  background: linear-gradient(90deg, #f7f8fb 0%, var(--accent) 52%, var(--accent-warm) 100%) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
+  background: linear-gradient(90deg, #ffffff 0%, #b9d4ff 45%, var(--accent-warm) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.mask-wrapper {
+  overflow: hidden;
 }

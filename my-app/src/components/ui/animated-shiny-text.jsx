@@ -2,6 +2,8 @@ import * as React from "react";
 import { motion } from "framer-motion";
 import { cn } from "../../lib/utils";
 
+const MotionH1 = motion.h1;
+
 const AnimatedText = React.forwardRef(
   (
     {
@@ -37,7 +39,7 @@ const AnimatedText = React.forwardRef(
         className={cn("flex justify-center items-center py-8", className)}
         {...props}
       >
-        <motion.h1
+        <MotionH1
           className={cn("text-[2.5rem] sm:text-[3.5rem] md:text-[4rem] lg:text-[5rem] xl:text-[6rem] leading-normal", textClassName)}
           style={{
             background: gradientColors,
@@ -53,7 +55,7 @@ const AnimatedText = React.forwardRef(
           onHoverEnd={() => hoverEffect && setIsHovered(false)}
         >
           {text}
-        </motion.h1>
+        </MotionH1>
       </div>
     );
   }

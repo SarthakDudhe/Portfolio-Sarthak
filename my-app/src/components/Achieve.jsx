@@ -1,10 +1,15 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, X, Calendar, Award } from "lucide-react";
+import { useRef, useState } from "react";
+import { Award, Calendar, ExternalLink, X } from "lucide-react";
+import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 import machineLearning from "../assets/ML_Certificate.png";
 import javaCert from "../assets/Java.jpg";
 import mysqlCert from "../assets/MySQL.jpg";
 import "./Achieve.css";
+
+const MotionSection = motion.section;
+const MotionDiv = motion.div;
+const MotionH2 = motion.h2;
+const MotionP = motion.p;
 
 const certificationData = [
   {
@@ -12,15 +17,15 @@ const certificationData = [
     title: "Full-Stack Web Development with MERN",
     issuer: "Coursera",
     date: "2025",
-    description: "Comprehensive certification covering React, Node.js, Express, MongoDB, and frontend/backend integration principles.",
-    image: machineLearning, // using available certificate image as visual preview
+    description: "Structured full-stack coursework covering React, Node.js, Express, MongoDB, and production-minded integration patterns.",
+    image: machineLearning,
   },
   {
     id: 2,
     title: "Java Programming Certification",
     issuer: "IBM SkillsBuild",
     date: "2024",
-    description: "Focus on object-oriented programming paradigms, memory management, exception handling, and data structures in Java.",
+    description: "Object-oriented programming, exception handling, memory fundamentals, and data structure implementation in Java.",
     image: javaCert,
   },
   {
@@ -28,7 +33,7 @@ const certificationData = [
     title: "Machine Learning Certification",
     issuer: "SimpliLearn",
     date: "Nov 2025",
-    description: "Hands-on foundation in statistical modeling, supervised/unsupervised algorithms, and data preprocessing pipelines.",
+    description: "Practical foundation in statistical modeling, supervised and unsupervised algorithms, and preprocessing pipelines.",
     image: machineLearning,
   },
   {
@@ -36,165 +41,143 @@ const certificationData = [
     title: "MySQL Database Administrator",
     issuer: "Udemy",
     date: "Nov 2025",
-    description: "Advanced relational database structures, database normalization, complex query indexing, and schema optimization.",
+    description: "Relational schema design, normalization, indexing concepts, and database administration workflows.",
     image: mysqlCert,
   },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.12,
-    },
-  },
-};
-
 const itemVariants = {
-  hidden: { opacity: 0, x: -15 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      duration: 0.8,
-      ease: [0.16, 1, 0.3, 1],
-    },
-  },
+  hidden: { opacity: 0, x: -28 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.72, ease: [0.16, 1, 0.3, 1] } },
 };
 
-function Achieve() {
+export default function Achieve() {
   const [selectedCert, setSelectedCert] = useState(null);
+  const [activeCert, setActiveCert] = useState(certificationData[0]);
+  const timelineRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start 70%", "end 55%"],
+  });
+  const spineScale = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <section className="achieve-section" id="achievements">
+    <MotionSection
+      className="achieve-section"
+      id="achievements"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.18 }}
+    >
       <div className="achieve-container">
-        
-        {/* Header */}
         <div className="achieve-header">
-          <div className="mask-wrapper">
-            <motion.span 
-              className="section-label"
-              initial={{ y: "100%" }}
-              whileInView={{ y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            >
-              Credentials
-            </motion.span>
+          <div>
+            <div className="section-label">Credentials</div>
+            <MotionH2 className="achieve-title" variants={itemVariants}>
+              Learning milestones with <span className="gradient-text">proof you can inspect.</span>
+            </MotionH2>
           </div>
-          <div className="mask-wrapper" style={{ marginBottom: "20px" }}>
-            <motion.h1 
-              className="achieve-title"
-              initial={{ y: "100%" }}
-              whileInView={{ y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.05 }}
-            >
-              Certifications
-            </motion.h1>
-          </div>
-          <motion.p 
-            className="achieve-desc"
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
-          >
-            Academic achievements, industry certifications, and structured coursework representing my continuous learning path.
-          </motion.p>
+          <MotionP className="achieve-desc" variants={itemVariants}>
+            Certifications and structured coursework that support the engineering side of my portfolio: backend fundamentals, databases, Java, full-stack development, and ML concepts.
+          </MotionP>
         </div>
 
-        {/* Minimal Timeline List */}
-        <motion.div
-          className="achieve-timeline"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.15 }}
-        >
-          <div className="timeline-spine"></div>
+        <div className="achieve-layout">
+          <MotionDiv
+            className="achieve-timeline"
+            ref={timelineRef}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
+            }}
+          >
+            <motion.div className="timeline-spine-fill" style={{ scaleY: spineScale }} />
 
-          {certificationData.map((cert) => (
-            <motion.div
-              key={cert.id}
-              className="timeline-item"
-              variants={itemVariants}
-            >
-              <div className="timeline-marker">
-                <div className="marker-dot"></div>
-              </div>
-
-              <div className="timeline-content">
-                <div className="timeline-meta">
-                  <span className="timeline-date">
-                    <Calendar size={13} />
-                    {cert.date}
-                  </span>
-                  <span className="timeline-issuer">
-                    <Award size={13} />
-                    {cert.issuer}
-                  </span>
-                </div>
-                
-                <h3 className="timeline-item-title">{cert.title}</h3>
-                <p className="timeline-item-desc">{cert.description}</p>
-                
-                <button
-                  className="view-credentials-btn"
-                  onClick={() => setSelectedCert(cert)}
-                >
-                  View Certificate <ExternalLink size={14} />
-                </button>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* Modal Lightbox */}
-        <AnimatePresence>
-          {selectedCert && (
-            <motion.div
-              className="cert-modal-overlay"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setSelectedCert(null)}
-            >
-              <motion.div
-                className="cert-modal-body"
-                initial={{ scale: 0.93, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.95, opacity: 0 }}
-                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                onClick={(e) => e.stopPropagation()}
+            {certificationData.map((cert, index) => (
+              <MotionDiv
+                className={`timeline-item ${activeCert.id === cert.id ? "active" : ""}`}
+                key={cert.id}
+                variants={itemVariants}
+                onMouseEnter={() => setActiveCert(cert)}
+                onFocus={() => setActiveCert(cert)}
               >
-                <div className="cert-modal-header">
-                  <div>
-                    <h2>{selectedCert.title}</h2>
-                    <p>Issued by {selectedCert.issuer} &bull; {selectedCert.date}</p>
+                <span className="timeline-marker">{String(index + 1).padStart(2, "0")}</span>
+
+                <div className="timeline-content">
+                  <div className="timeline-meta">
+                    <span>
+                      <Calendar size={13} />
+                      {cert.date}
+                    </span>
+                    <span>
+                      <Award size={13} />
+                      {cert.issuer}
+                    </span>
                   </div>
-                  <button
-                    className="cert-modal-close"
-                    onClick={() => setSelectedCert(null)}
-                  >
-                    <X size={20} />
+                  <h3>{cert.title}</h3>
+                  <p>{cert.description}</p>
+                  <button type="button" onClick={() => setSelectedCert(cert)}>
+                    View certificate <ExternalLink size={14} />
                   </button>
                 </div>
-                <div className="cert-modal-image-wrap">
-                  <img
-                    src={selectedCert.image}
-                    alt={`${selectedCert.title} Certificate`}
-                  />
-                </div>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+              </MotionDiv>
+            ))}
+          </MotionDiv>
 
+          <div className="certificate-preview-panel">
+            <AnimatePresence mode="wait">
+              <MotionDiv
+                key={activeCert.id}
+                className="certificate-preview-inner"
+                initial={{ opacity: 0, y: 18, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -16, scale: 0.98 }}
+                transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <img src={activeCert.image} alt={`${activeCert.title} preview`} />
+                <div>
+                  <span>{activeCert.issuer}</span>
+                  <strong>{activeCert.title}</strong>
+                </div>
+              </MotionDiv>
+            </AnimatePresence>
+          </div>
+        </div>
       </div>
-    </section>
+
+      <AnimatePresence>
+        {selectedCert && (
+          <MotionDiv
+            className="cert-modal-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedCert(null)}
+          >
+            <MotionDiv
+              className="cert-modal-body"
+              initial={{ opacity: 0, y: 24, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 16, scale: 0.97 }}
+              transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
+              onClick={(event) => event.stopPropagation()}
+            >
+              <div className="cert-modal-header">
+                <div>
+                  <span>{selectedCert.issuer} - {selectedCert.date}</span>
+                  <h2>{selectedCert.title}</h2>
+                </div>
+                <button type="button" onClick={() => setSelectedCert(null)} aria-label="Close certificate preview">
+                  <X size={20} />
+                </button>
+              </div>
+              <div className="cert-modal-image-wrap">
+                <img src={selectedCert.image} alt={`${selectedCert.title} certificate`} />
+              </div>
+            </MotionDiv>
+          </MotionDiv>
+        )}
+      </AnimatePresence>
+    </MotionSection>
   );
 }
-
-export default Achieve;

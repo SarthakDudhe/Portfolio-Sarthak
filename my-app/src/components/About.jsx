@@ -1,25 +1,47 @@
-import React, { useRef } from "react";
-import "./About.css"
-import mypic from "../assets/bluepic.png"
+import { useRef } from "react";
+import { ArrowUpRight, BriefcaseBusiness, Code2, GraduationCap } from "lucide-react";
 import { motion, useMotionValue, useTransform } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import mypic from "../assets/bluepic.png";
+import "./About.css";
+
+const MotionSection = motion.section;
+const MotionDiv = motion.div;
+const MotionH1 = motion.h1;
+const MotionP = motion.p;
+
+const statItems = [
+  {
+    icon: GraduationCap,
+    value: "8.99",
+    label: "Computer Engineering CGPA",
+    detail: "Academic foundation with a focus on software systems.",
+  },
+  {
+    icon: Code2,
+    value: "MERN",
+    label: "Full-stack development",
+    detail: "React, Node, Express, MongoDB, APIs, and product UI.",
+  },
+  {
+    icon: BriefcaseBusiness,
+    value: "Intern",
+    label: "Sapphire Infocom",
+    detail: "Software Engineer Internship, Aug 14 - Nov 13, 2025.",
+  },
+];
 
 export default function About() {
   const cardRef = useRef(null);
-  
-  // 3D Parallax Tilt for Profile Picture
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const rotateX = useTransform(y, [-100, 100], [10, -10]);
-  const rotateY = useTransform(x, [-100, 100], [-10, 10]);
+  const rotateX = useTransform(y, [-120, 120], [8, -8]);
+  const rotateY = useTransform(x, [-120, 120], [-8, 8]);
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = (event) => {
     if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
-    const offsetX = e.clientX - rect.left - rect.width / 2;
-    const offsetY = e.clientY - rect.top - rect.height / 2;
-    x.set(offsetX);
-    y.set(offsetY);
+    x.set(event.clientX - rect.left - rect.width / 2);
+    y.set(event.clientY - rect.top - rect.height / 2);
   };
 
   const handleMouseLeave = () => {
@@ -28,105 +50,124 @@ export default function About() {
   };
 
   return (
-    <section className="about-section" id="about">
+    <MotionSection
+      className="about-section"
+      id="about"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.25 }}
+    >
       <div className="about-container">
-        
-        {/* Left Column: Interactive 3D Tilt Profile Card */}
-        <motion.div 
-          className="about-left"
-          initial={{ opacity: 0, y: 30, scale: 0.97 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        <MotionDiv
+          className="about-portrait-column"
+          variants={{
+            hidden: { opacity: 0, y: 48 },
+            visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] } },
+          }}
         >
-          <motion.div 
+          <MotionDiv
             ref={cardRef}
             className="about-image-card"
             style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
           >
-            <div className="glow-overlay" />
-            <img src={mypic} alt="Sarthak Dudhe" className="profile-img" style={{ transform: "translateZ(30px)" }} />
-          </motion.div>
-        </motion.div>
+            <div className="portrait-meta">
+              <span>Available for frontend/full-stack roles</span>
+              <span>Dombivli, India</span>
+            </div>
+            <img src={mypic} alt="Sarthak Dudhe" className="profile-img" loading="eager" decoding="async" fetchPriority="high" />
+          </MotionDiv>
+        </MotionDiv>
 
-        {/* Right Column: Premium Minimalist Content */}
-        <div className="about-right">
+        <div className="about-content-column">
           <div className="mask-wrapper">
-            <motion.h2 
+            <MotionDiv
               className="section-label"
-              initial={{ y: "100%" }}
-              whileInView={{ y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              variants={{
+                hidden: { y: "120%" },
+                visible: { y: 0, transition: { duration: 0.75, ease: [0.16, 1, 0.3, 1] } },
+              }}
             >
-              ABOUT ME
-            </motion.h2>
-          </div>
-          <div className="mask-wrapper" style={{ marginBottom: "24px" }}>
-            <motion.h1 
-              className="hero-headline"
-              initial={{ y: "100%" }}
-              whileInView={{ y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.05 }}
-            >
-              Crafting high-performance <span className="gradient-text">full-stack applications</span> with engineering precision.
-            </motion.h1>
+              About
+            </MotionDiv>
           </div>
 
-          <motion.p 
-            className="bio-body"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-          >
-            I'm a Computer Engineering student and Full-Stack Developer specializing in the MERN stack (React, Node, Express, MongoDB). Recently, I completed a Software Engineer Internship at Sapphire Infocom (Aug 14, 2025 - Nov 13, 2025), where I built robust APIs, optimized system speed, and translated complex designs into high-performance web platforms.
-          </motion.p>
-
-          {/* Minimal Key Indicators Grid */}
-          <motion.div 
-            className="stats-grid"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-          >
-            <div className="stat-item">
-              <span className="stat-number">8.99</span>
-              <span className="stat-label">Computer Eng. CGPA</span>
-            </div>
-            <div className="stat-item">
-              <span className="stat-number">MERN</span>
-              <span className="stat-label">Certified Stack Developer</span>
-            </div>
-            <div className="stat-item">
-              <span className="stat-number">Intern</span>
-              <span className="stat-label">Sapphire Infocom (Aug 14 - Nov 13, 2025)</span>
-            </div>
-          </motion.div>
-
-          {/* Call to Action Button */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-          >
-            <a 
-              href="https://linkedin.com/in/sarthak-dudhe-67155a327" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="cv-button"
+          <div className="mask-wrapper">
+            <MotionH1
+              className="about-headline"
+              variants={{
+                hidden: { y: "115%" },
+                visible: { y: 0, transition: { duration: 0.9, delay: 0.08, ease: [0.16, 1, 0.3, 1] } },
+              }}
             >
-              Connect on LinkedIn <ArrowUpRight size={18} />
+              I design and engineer <span className="gradient-text">full-stack interfaces</span> that feel fast, useful, and polished.
+            </MotionH1>
+          </div>
+
+          <MotionP
+            className="about-copy"
+            variants={{
+              hidden: { opacity: 0, y: 24 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.75, delay: 0.18, ease: [0.16, 1, 0.3, 1] } },
+            }}
+          >
+            I am a Computer Engineering student and full-stack developer working across React, Node, Express, MongoDB, and applied AI workflows. During my Software Engineer Internship at Sapphire Infocom, I built APIs, improved system performance, and translated product requirements into clean, scalable web experiences.
+          </MotionP>
+
+          <MotionDiv
+            className="about-proof-grid"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: { opacity: 1, transition: { delayChildren: 0.25, staggerChildren: 0.1 } },
+            }}
+          >
+            {statItems.map((item) => {
+              const Icon = item.icon;
+              return (
+                <MotionDiv
+                  className="about-proof-card"
+                  key={item.label}
+                  variants={{
+                    hidden: { opacity: 0, y: 22 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] } },
+                  }}
+                >
+                  <Icon size={18} />
+                  <span className="proof-value">{item.value}</span>
+                  <span className="proof-label">{item.label}</span>
+                  <p>{item.detail}</p>
+                </MotionDiv>
+              );
+            })}
+          </MotionDiv>
+
+          <MotionDiv
+            className="about-actions"
+            variants={{
+              hidden: { opacity: 0, y: 18 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.65, delay: 0.38, ease: [0.16, 1, 0.3, 1] } },
+            }}
+          >
+            <a
+              href="https://linkedin.com/in/sarthak-dudhe-67155a327"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="premium-button"
+            >
+              Connect on LinkedIn <ArrowUpRight size={17} />
             </a>
-          </motion.div>
-        </div>
+            <a href="#projects" className="text-link">
+              View selected work
+            </a>
+          </MotionDiv>
 
+          <div className="about-running-note">
+            <span>Focus</span>
+            <strong>Interactive web products, AI workflows, and production-ready React interfaces.</strong>
+          </div>
+        </div>
       </div>
-    </section>
+    </MotionSection>
   );
 }

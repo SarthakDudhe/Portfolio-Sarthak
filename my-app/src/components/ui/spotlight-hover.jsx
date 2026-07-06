@@ -2,6 +2,8 @@ import React, { useRef, useState, useCallback, useEffect } from 'react';
 import { motion, useSpring, useTransform } from 'framer-motion';
 import { cn } from '../../lib/utils';
 
+const MotionDiv = motion.div;
+
 export function SpotlightHover({
   className,
   size = 200,
@@ -55,7 +57,7 @@ export function SpotlightHover({
   }, [parentElement, handleMouseMove]);
 
   return (
-    <motion.div
+    <MotionDiv
       ref={containerRef}
       className={cn(
         'pointer-events-none absolute rounded-full bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops),transparent_80%)] blur-xl transition-opacity duration-200',
