@@ -148,7 +148,7 @@ export default function Project() {
                 transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
               >
                 <div className="case-media">
-                  <img src={activeProject.image} alt={`${activeProject.title} interface preview`} />
+                  <img src={activeProject.image} alt={`${activeProject.title} interface preview`} loading="eager" decoding="async" fetchPriority="high" />
                   <span className="case-floating-label">
                     <Layers3 size={15} />
                     {activeProject.category}
@@ -182,10 +182,10 @@ export default function Project() {
 
         <div className="projects-mobile-list">
           {projects.map((project) => (
-            <MotionDiv className="project-mobile-card" key={project.id} variants={reveal}>
-              <div className="project-mobile-image">
-                <img src={project.image} alt={`${project.title} preview`} />
-              </div>
+              <MotionDiv className="project-mobile-card" key={project.id} variants={reveal}>
+                <div className="project-mobile-image">
+                <img src={project.image} alt={`${project.title} preview`} loading="lazy" decoding="async" />
+                </div>
               <div className="project-mobile-body">
                 <span>{project.category}</span>
                 <h3>{project.title}</h3>

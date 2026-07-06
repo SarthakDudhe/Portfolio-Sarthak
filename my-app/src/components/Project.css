@@ -1,6 +1,8 @@
 .projects-section {
   position: relative;
   padding: 150px 0;
+  content-visibility: auto;
+  contain-intrinsic-size: 1200px;
 }
 
 .projects-container {
@@ -102,6 +104,7 @@
 }
 
 .case-study-card {
+  position: relative;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background:
@@ -111,11 +114,21 @@
   overflow: hidden;
 }
 
+.case-study-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border: 1px solid rgba(120, 149, 255, 0.18);
+  border-radius: inherit;
+}
+
 .case-media {
   position: relative;
   aspect-ratio: 16 / 10;
   overflow: hidden;
   border-bottom: 1px solid var(--line);
+  background: #06070a;
 }
 
 .case-media img {
@@ -156,6 +169,15 @@
 
 .case-body {
   padding: clamp(24px, 4vw, 36px);
+}
+
+.case-body::before {
+  content: "";
+  display: block;
+  width: 92px;
+  height: 2px;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, var(--accent), transparent);
 }
 
 .case-kicker {
@@ -260,11 +282,14 @@
     gap: 22px;
   }
 
-  .project-mobile-card {
+.project-mobile-card {
     border: 1px solid var(--line);
     border-radius: var(--radius);
-    background: rgba(255, 255, 255, 0.035);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02)),
+      rgba(12, 15, 21, 0.82);
     overflow: hidden;
+    box-shadow: var(--shadow-soft);
   }
 
   .project-mobile-image {
@@ -281,6 +306,15 @@
 
   .project-mobile-body {
     padding: 24px;
+  }
+
+  .project-mobile-body::before {
+    content: "";
+    display: block;
+    width: 68px;
+    height: 2px;
+    margin-bottom: 18px;
+    background: linear-gradient(90deg, var(--accent), transparent);
   }
 
   .project-mobile-body > span {
