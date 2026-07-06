@@ -10,6 +10,7 @@ function Contact() {
     email: "",
     feedback: "",
   });
+  const [formStatus, setFormStatus] = useState("");
 
   const handlechange = (event) => {
     setformData({ ...formData, [event.target.name]: event.target.value });
@@ -17,6 +18,7 @@ function Contact() {
 
   const handlesubmit = (event) => {
     event.preventDefault();
+    setFormStatus("Sending...");
     emailjs.send(
       "service_1jsj213",
       "template_ei4bx4o",
@@ -24,7 +26,7 @@ function Contact() {
       "2b_xgeJG1rqw9UmFp"
     )
     .then(() => {
-      alert("Thank You For Your Message");
+      setFormStatus("Message sent. Thank you for reaching out.");
       setformData({
         name: "",
         email: "",
@@ -32,7 +34,8 @@ function Contact() {
       });
     })
     .catch((error) => {
-      alert("Error sending message: " + error);
+      setFormStatus("Message could not be sent. Please email me directly.");
+      console.error("EmailJS error:", error);
     });
   };
 
@@ -152,6 +155,7 @@ function Contact() {
           <button type="submit" className="submit-btn-minimal">
             Send Message
           </button>
+          {formStatus && <p className="form-status">{formStatus}</p>}
         </motion.form>
 
       </div>

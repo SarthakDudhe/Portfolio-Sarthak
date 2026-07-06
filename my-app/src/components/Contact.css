@@ -30,7 +30,7 @@
   font-weight: 700;
   color: #ffffff;
   margin: 0 0 20px 0;
-  letter-spacing: -0.5px;
+  letter-spacing: 0;
 }
 
 .contact-sub {
@@ -219,5 +219,126 @@
 @media (max-width: 576px) {
   .contact-section {
     padding: 80px 20px;
+  }
+}
+
+/* Premium redesign layer */
+.contact-section {
+  padding: 150px 5vw 130px;
+}
+
+.contact-container {
+  max-width: 1180px;
+  gap: 92px;
+  padding: 56px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.016)),
+    rgba(12, 15, 21, 0.7);
+  box-shadow: var(--shadow-premium);
+}
+
+.contact-title-minimal {
+  font-size: clamp(2.35rem, 5vw, 5rem);
+  line-height: 0.96;
+  letter-spacing: 0;
+  font-weight: 780;
+}
+
+.contact-sub {
+  color: var(--text-soft);
+  line-height: 1.75;
+}
+
+.contact-detail-icon {
+  color: var(--accent-warm);
+}
+
+.contact-detail-row span,
+.contact-detail-row a {
+  color: var(--text-soft);
+}
+
+.contact-detail-row a:hover {
+  color: var(--accent-strong);
+}
+
+.social-link-item {
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--border-subtle);
+}
+
+.contact-form-minimal {
+  padding-top: 10px;
+}
+
+.form-group-minimal input,
+.form-group-minimal textarea {
+  border-bottom-color: var(--border-subtle);
+  color: var(--text-main);
+}
+
+.form-group-minimal input::placeholder,
+.form-group-minimal textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.input-line {
+  background: linear-gradient(90deg, var(--accent), var(--accent-warm));
+}
+
+.submit-btn-minimal {
+  border-radius: 8px;
+  background: #f7f8fb;
+  border-color: #f7f8fb;
+  color: #080a0f;
+  box-shadow: 0 18px 40px rgba(255, 255, 255, 0.1);
+}
+
+.submit-btn-minimal:hover {
+  background: var(--accent-warm);
+  border-color: var(--accent-warm);
+  color: #080a0f;
+  box-shadow: 0 22px 48px rgba(215, 185, 138, 0.18);
+}
+
+.form-status {
+  color: var(--text-soft);
+  font-size: 0.92rem;
+  margin: -14px 0 0;
+}
+
+@media (max-width: 968px) {
+  .contact-section {
+    padding: 110px 5vw;
+  }
+
+  .contact-container {
+    padding: 42px;
+  }
+
+  .contact-left {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .contact-details-minimal {
+    align-items: flex-start;
+  }
+
+  .submit-btn-minimal {
+    align-self: flex-start;
+  }
+}
+
+@media (max-width: 576px) {
+  .contact-section {
+    padding: 88px 20px;
+  }
+
+  .contact-container {
+    padding: 28px;
   }
 }

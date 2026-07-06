@@ -9,7 +9,7 @@ import Contact from './components/Contact'
 import Achieve from './components/Achieve'
 import { Route, Routes, BrowserRouter } from "react-router-dom"
 import { InteractiveQuantumCore } from "./components/ui/InteractiveQuantumCore"
-import { motion } from "framer-motion"
+import { motion, useScroll, useSpring } from "framer-motion"
 import './App.css'
 
 const revealVariants = {
@@ -26,6 +26,12 @@ const revealVariants = {
 
 function App() {
   const [showCanvas, setShowCanvas] = useState(false);
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 120,
+    damping: 28,
+    restDelta: 0.001,
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,6 +51,7 @@ function App() {
     <>
       <BrowserRouter>
         <Navbar />    
+        <motion.div className="scroll-progress" style={{ scaleX }} />
         <main className="relative">
           {/* Shared Interactive Particle Nodes Overlay */}
           <div 
@@ -52,7 +59,7 @@ function App() {
             style={{ 
               opacity: showCanvas ? 1 : 0, 
               zIndex: 0,
-              background: "radial-gradient(circle at center, rgba(74, 158, 255, 0.06) 0%, rgba(155, 81, 224, 0.02) 50%, transparent 80%)"
+              background: "radial-gradient(circle at center, rgba(114, 167, 255, 0.045) 0%, rgba(215, 185, 138, 0.018) 48%, transparent 80%)"
             }}
           >
             <InteractiveQuantumCore />

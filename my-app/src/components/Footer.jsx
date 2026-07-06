@@ -1,7 +1,7 @@
 import "./Footer.css"
 import React from 'react';
 
-import { Github, Linkedin, Mail, Twitter } from 'lucide-react';
+import { Github, Linkedin, Mail } from 'lucide-react';
 function Footer()
 {
 return(
@@ -12,12 +12,11 @@ return(
       <div className="footer-content">
         <div className="footer-section main-info">
           <h2>Sarthak Dudhe</h2>
-          <p>Creative Developer </p>
+          <p>Full-Stack Developer building polished web products.</p>
           <div className="social-links">
-            <a href="https://github.com" aria-label="GitHub"><Github size={24} /></a>
-            <a href="https://linkedin.com" aria-label="LinkedIn"><Linkedin size={24} /></a>
-            
-            <a href="https://mail.google.com" aria-label="Email"><Mail size={24} /></a>
+            <a href="https://github.com/SarthakDudhe" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Github size={24} /></a>
+            <a href="https://linkedin.com/in/sarthak-dudhe-67155a327" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Linkedin size={24} /></a>
+            <a href="mailto:sarthakdudhe79@gmail.com" aria-label="Email"><Mail size={24} /></a>
           </div>
         </div>
         
@@ -44,9 +43,9 @@ return(
         
         <div className="footer-section contact">
           <h3>Contact</h3>
-          <p>Dombivli,Thane</p>
+          <p>Dombivli, Maharashtra</p>
           <p>sarthakdudhe79@gmail.com</p>
-          <p>Phone No. </p>
+          <p>Open to internships and full-stack roles.</p>
         </div>
       </div>
       

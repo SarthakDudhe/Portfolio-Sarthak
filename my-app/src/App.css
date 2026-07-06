@@ -1,0 +1,29 @@
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 3000;
+  transform-origin: 0%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-warm));
+  box-shadow: 0 0 18px rgba(114, 167, 255, 0.48);
+}
+
+main {
+  isolation: isolate;
+}
+
+.section-label {
+  color: var(--accent-warm) !important;
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0 !important;
+  text-transform: uppercase;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #f7f8fb 0%, var(--accent) 52%, var(--accent-warm) 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}

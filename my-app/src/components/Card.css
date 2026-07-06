@@ -54,7 +54,7 @@
   font-weight: 700;
   line-height: 1.15;
   color: #ffffff;
-  letter-spacing: -0.8px;
+  letter-spacing: 0;
 }
 
 .tech-desc {
@@ -101,7 +101,7 @@
   font-weight: 600;
   color: #ffffff;
   margin: 0;
-  letter-spacing: -0.2px;
+  letter-spacing: 0;
 }
 
 .skills-inline-list {
@@ -221,5 +221,113 @@
 
   .skills-inline-list {
     gap: 10px 12px;
+  }
+}
+
+/* Premium redesign layer */
+.tech-stack-section {
+  padding: 150px 5vw;
+}
+
+.tech-container {
+  max-width: 1180px;
+  gap: 92px;
+}
+
+.tech-left {
+  top: 118px;
+}
+
+.tech-main-title {
+  font-size: clamp(2.2rem, 5vw, 4.7rem);
+  line-height: 0.98;
+  letter-spacing: 0;
+  font-weight: 760;
+}
+
+.tech-desc {
+  color: var(--text-soft);
+  line-height: 1.75;
+  max-width: 430px;
+}
+
+.tech-right-list {
+  gap: 18px;
+}
+
+.tech-category-row {
+  position: relative;
+  padding: 30px;
+  border: 1px solid var(--border-subtle);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.015)),
+    rgba(12, 15, 21, 0.54);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: 8px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+}
+
+.tech-category-row::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(114, 167, 255, 0.12), transparent 32%);
+  opacity: 0;
+  transition: opacity 0.45s var(--ease-premium);
+}
+
+.tech-category-row:hover::before {
+  opacity: 1;
+}
+
+.category-header {
+  margin-bottom: 22px;
+}
+
+.cat-icon {
+  color: var(--accent-warm);
+  filter: none;
+}
+
+.category-header h3 {
+  letter-spacing: 0;
+}
+
+.skill-item {
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.035);
+  border-color: var(--border-subtle);
+}
+
+.skill-name {
+  color: var(--text-soft);
+}
+
+.skill-item:hover {
+  border-color: rgba(255, 255, 255, 0.24);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.24);
+}
+
+@media (max-width: 968px) {
+  .tech-stack-section {
+    padding: 110px 5vw;
+  }
+
+  .tech-left {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+@media (max-width: 576px) {
+  .tech-stack-section {
+    padding: 88px 20px;
+  }
+
+  .tech-category-row {
+    padding: 24px;
   }
 }

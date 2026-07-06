@@ -13,7 +13,7 @@ const projects = [
   {
     id: 1,
     num: "01",
-    title: "Spark — AI Workspace",
+    title: "Spark - AI Workspace",
     category: "Full-Stack AI Platform",
     description: "An AI-powered career workspace for resume management, automated resume-job matching, content generation for outreach, and automated PDF feedback reports.",
     image: spark,
