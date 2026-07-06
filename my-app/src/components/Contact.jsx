@@ -57,6 +57,10 @@ export default function Contact() {
           }}
         >
           <div className="section-label">Contact</div>
+          <div className="contact-chip-row">
+            <span>Available for internships</span>
+            <span>Frontend-led full stack</span>
+          </div>
           <MotionH2
             className="contact-title"
             variants={{
@@ -64,7 +68,7 @@ export default function Contact() {
               visible: { opacity: 1, y: 0, transition: { duration: 0.78, delay: 0.08, ease: [0.16, 1, 0.3, 1] } },
             }}
           >
-            Let us build something <span className="gradient-text">sharp and useful.</span>
+            Let&apos;s build a <span className="gradient-text">sharp product interface.</span>
           </MotionH2>
           <MotionP
             className="contact-sub"
@@ -73,15 +77,15 @@ export default function Contact() {
               visible: { opacity: 1, y: 0, transition: { duration: 0.7, delay: 0.16, ease: [0.16, 1, 0.3, 1] } },
             }}
           >
-            I am open to internships, frontend-heavy full-stack roles, and product engineering opportunities where polished UI and reliable systems both matter.
+            Open to internships and frontend-heavy full-stack roles where motion, clarity, and reliability matter.
           </MotionP>
 
-          <div className="contact-detail-panel">
-            <a href="mailto:sarthakdudhe79@gmail.com">
+          <div className="contact-meta">
+            <a href="mailto:sarthakdudhe79@gmail.com" className="contact-meta-item">
               <Mail size={18} />
               <span>sarthakdudhe79@gmail.com</span>
             </a>
-            <div>
+            <div className="contact-meta-item">
               <MapPin size={18} />
               <span>Dombivli, Maharashtra, India</span>
             </div>
@@ -107,20 +111,22 @@ export default function Contact() {
             visible: { opacity: 1, y: 0, transition: { duration: 0.75, delay: 0.08, ease: [0.16, 1, 0.3, 1] } },
           }}
         >
-          <label className="field-group">
-            <input type="text" name="name" value={formData.name} onChange={handleChange} required placeholder=" " />
-            <span>Your name</span>
-          </label>
+          <div className="contact-form-grid">
+            <label className="field-group">
+              <input type="text" name="name" value={formData.name} onChange={handleChange} required placeholder=" " />
+              <span>Your name</span>
+            </label>
 
-          <label className="field-group">
-            <input type="email" name="email" value={formData.email} onChange={handleChange} required placeholder=" " />
-            <span>Email address</span>
-          </label>
+            <label className="field-group">
+              <input type="email" name="email" value={formData.email} onChange={handleChange} required placeholder=" " />
+              <span>Email address</span>
+            </label>
 
-          <label className="field-group message">
-            <textarea name="feedback" value={formData.feedback} onChange={handleChange} required placeholder=" " rows={5} />
-            <span>Project, role, or message</span>
-          </label>
+            <label className="field-group message">
+              <textarea name="feedback" value={formData.feedback} onChange={handleChange} required placeholder=" " rows={4} />
+              <span>Project, role, or message</span>
+            </label>
+          </div>
 
           <div className="form-footer">
             <button type="submit">
